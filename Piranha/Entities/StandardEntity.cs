@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Web;
 
 namespace Piranha.Entities
 {
@@ -77,7 +74,7 @@ namespace Piranha.Entities
 		/// </summary>
 		/// <param name="db">The db context</param>
 		/// <param name="state">The current entity state</param>
-		public override void OnSave(DataContext db, System.Data.EntityState state) {
+		public override void OnSave(DataContext db, EntityState state) {
 			if (db.Identity != Guid.Empty || Application.Current.UserProvider.IsAuthenticated || AllowAnonymous) {
 				if (state == EntityState.Added) {
 					if (Id == Guid.Empty)
@@ -100,6 +97,10 @@ namespace Piranha.Entities
 				throw new UnauthorizedAccessException("User must be logged in to delete entity") ;
 		}
 
+        /// <summary>
+        /// Performs a binary deep clone of the current entity.
+        /// </summary>
+        /// <returns>The cloned entity</returns>
 		public T Clone() {
 			using (var ms = new MemoryStream()) {
 				var formatter = new BinaryFormatter() ;
