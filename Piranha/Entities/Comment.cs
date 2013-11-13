@@ -96,28 +96,6 @@ namespace Piranha.Entities
 		/// Gets/sets the date the entity was last changed.
 		/// </summary>
 		public DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the optional id of the user who initially created the entity.
-		/// </summary>
-		public Guid? CreatedById { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the optional id of the user who last changed the entity.
-		/// </summary>
-		public Guid? UpdatedById { get ; set ; }
-		#endregion
-
-		#region Navigation properties
-		/// <summary>
-		/// Gets/sets the optional user who initially created the entity.
-		/// </summary>
-		public User CreatedBy { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the optional user who last changed the entity.
-		/// </summary>
-		public User UpdatedBy { get ; set ; }
 		#endregion
 
 		#region Internal properties
@@ -133,16 +111,6 @@ namespace Piranha.Entities
 		/// </summary>
 		public CommentAuthor Author {
 			get {
-				if (CreatedById.HasValue) {
-					if (CreatedBy == null)
-						using (var db = new DataContext()) {
-							CreatedBy = db.Users.Where(u => u.Id == CreatedById).SingleOrDefault() ;
-						}
-					return new CommentAuthor() {
-						Name = CreatedBy.Firstname + " " + CreatedBy.Surname,
-						Email = CreatedBy.Email
-					} ;
-				}
 				return new CommentAuthor() {
 					Name = AuthorName,
 					Email = AuthorEmail
@@ -183,12 +151,8 @@ namespace Piranha.Entities
 				if (Id == Guid.Empty)
 					Id = Guid.NewGuid() ;
 				Created = Updated = DateTime.Now ;
-				if (Application.Current.UserProvider.IsAuthenticated || db.Identity != Guid.Empty)
-					CreatedById = UpdatedById = db.Identity != Guid.Empty ? db.Identity : Application.Current.UserProvider.UserId ;
 			} else if (state == EntityState.Modified) {
 				Updated = DateTime.Now ;
-				if (Application.Current.UserProvider.IsAuthenticated || db.Identity != Guid.Empty)
-					UpdatedById = db.Identity != Guid.Empty ? db.Identity : Application.Current.UserProvider.UserId ;
 			}
 			base.OnSave(db, state) ;
 		}

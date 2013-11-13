@@ -164,10 +164,14 @@ namespace Piranha.Extend.Regions
 							query = query.Include(p => p.Categories) ;
 						if (admin || IncludeTemplate)
 							query = query.Include(p => p.Template) ;
+                        /*
+                         * TODO: Integrate with membership provider
+                         *
 						if (!admin && IncludeCreatedBy)
 							query = query.Include(p => p.CreatedBy) ;
 						if (!admin && IncludeUpdatedBy)
 							query = query.Include(p => p.UpdatedBy) ;
+                         */
 
 						// Order
 						if (OrderBy == OrderByType.PUBLISHED)

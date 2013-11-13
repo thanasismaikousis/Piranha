@@ -76,8 +76,8 @@ namespace Piranha.Areas.Manager.Models
 					Id = c.Id,
 					Title = !String.IsNullOrEmpty(c.Title) ? c.Title : c.Body.Substring(0, 32) + "...",
 					Created = c.Created,
-					AuthorName = c.CreatedBy != null ? c.CreatedBy.Firstname + " " + c.CreatedBy.Surname : c.AuthorName,
-					AuthorEmail = c.CreatedBy != null ? c.CreatedBy.Email : c.AuthorEmail,
+					AuthorName = c.AuthorName,
+					AuthorEmail = c.AuthorEmail,
 					Status = (Comment.CommentStatus)c.InternalStatus,
 				}).OrderByDescending(c => c.Created).ToList() ;
 			}

@@ -35,28 +35,6 @@ namespace Piranha.Entities
 		/// Gets/sets the date the entity was last updated.
 		/// </summary>
 		public DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the id of the user who initially created the entity.
-		/// </summary>
-		public Guid CreatedById { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the id of the user who last updated the entity.
-		/// </summary>
-		public Guid UpdatedById { get ; set ; }
-		#endregion
-
-		#region Navigation properties
-		/// <summary>
-		/// Gets/sets the user who initially created the entity.
-		/// </summary>
-		public User CreatedBy { get ; protected set ; }
-
-		/// <summary>
-		/// Gets/sets the user who last updated the entity.
-		/// </summary>
-		public User UpdatedBy { get ; protected set ; }
 		#endregion
 
 		/// <summary>
@@ -80,10 +58,8 @@ namespace Piranha.Entities
 					if (Id == Guid.Empty)
 						Id = Guid.NewGuid() ;
 					Created = Updated = DateTime.Now ;
-					CreatedById = UpdatedById = db.Identity != Guid.Empty ? db.Identity : Application.Current.UserProvider.UserId ;
 				} else if (state == EntityState.Modified) {
 					Updated = DateTime.Now ;
-					UpdatedById = db.Identity != Guid.Empty ? db.Identity : Application.Current.UserProvider.UserId ;
 				}
 			} else throw new UnauthorizedAccessException("User must be logged in to save entity") ;
 		}
