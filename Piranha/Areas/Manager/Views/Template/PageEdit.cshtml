@@ -1,7 +1,8 @@
 ﻿@model Piranha.Models.Manager.TemplateModels.PageEditModel
+@using Piranha.Web
 @{
-    ViewBag.Selected = "Settings" ;
-    ViewBag.SelectedTab = "PageType" ;
+    ViewBag.Selected = "Settings";
+    ViewBag.SelectedTab = "PageType";
 }
 @section Head {
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.template.js"></script>
@@ -53,8 +54,6 @@
     @Html.HiddenFor(m => m.Template.Type)
     @Html.HiddenFor(m => m.Template.Created)
     @Html.HiddenFor(m => m.Template.Updated)
-    @Html.HiddenFor(m => m.Template.CreatedBy)
-    @Html.HiddenFor(m => m.Template.UpdatedBy)
     @if (!Piranha.Application.Current.IsMvc) {
     @Html.HiddenFor(m => m.Template.View)
     @Html.HiddenFor(m => m.Template.ShowView)

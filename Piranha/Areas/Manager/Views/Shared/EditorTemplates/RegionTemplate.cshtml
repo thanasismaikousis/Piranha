@@ -1,4 +1,5 @@
 ﻿@model Piranha.Models.RegionTemplate
+@using Piranha.Web
 <tr>
     <td class="form">
         <span>@Model.Name</span>
@@ -30,7 +31,6 @@
             @Html.HiddenFor(m => m.Description)
             @if (!Model.IsNew) {
             @Html.HiddenFor(m => m.Created)
-            @Html.HiddenFor(m => m.CreatedBy)
             }
         </div>
     </td> 

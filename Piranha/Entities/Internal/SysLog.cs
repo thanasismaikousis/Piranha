@@ -50,18 +50,6 @@ namespace Piranha.Models
 		/// </summary>
 		[Column(Name="syslog_updated")]
 		public override DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the id of the user who created the log.
-		/// </summary>
-		[Column(Name="syslog_created_by")]
-		public override Guid CreatedBy { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the id of the user who last updated the log.
-		/// </summary>
-		[Column(Name="syslog_updated_by")]
-		public override Guid UpdatedBy { get ; set ; }
 		#endregion
 	}
 }

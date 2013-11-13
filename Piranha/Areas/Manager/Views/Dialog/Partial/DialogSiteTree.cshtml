@@ -1,4 +1,5 @@
 ﻿@model List<Piranha.Models.Sitemap>
+@using Piranha.Web
 @foreach (var page in Model) {
     <li class="collapsed">
         <span class="title">@if (page.Pages.Count > 0) {<span class="action"></span>}<a data-id="@page.Id" href="#">

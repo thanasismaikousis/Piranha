@@ -1,4 +1,5 @@
-﻿@model List<Piranha.Models.Sitemap>
+﻿@using Piranha.Web
+@model List<Piranha.Models.Sitemap>
 @foreach (var page in Model) {
     <li id="@page.Id" class="@(page.Pages.Count > 0 ? (page.Level <= ViewBag.Levels || page.HasChild(ViewBag.Expanded) ? "expanded" : "collapsed") : "") @(page.Updated > page.LastPublished ? "draft" : "")">
         <span class="buttons">

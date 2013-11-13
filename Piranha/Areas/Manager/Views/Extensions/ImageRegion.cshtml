@@ -1,14 +1,15 @@
 ﻿@model Piranha.Extend.Regions.ImageRegion
+@using Piranha.Web
 @{
-    Layout = "" ;
-    
-    var btnId = @ViewData.TemplateInfo.GetFullHtmlFieldId("myButton") ;
-    var boxId = @ViewData.TemplateInfo.GetFullHtmlFieldId("myImageBox") ;
-    var retId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Id") ;
-    var nameId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Name") ;
-    var altId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Description") ;
-    var imgPrev = @ViewData.TemplateInfo.GetFullHtmlFieldId("Preview") ;
-    var btnRm = @ViewData.TemplateInfo.GetFullHtmlFieldId("btnRemove") ;
+    Layout = "";
+
+    var btnId = @ViewData.TemplateInfo.GetFullHtmlFieldId("myButton");
+    var boxId = @ViewData.TemplateInfo.GetFullHtmlFieldId("myImageBox");
+    var retId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Id");
+    var nameId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Name");
+    var altId = @ViewData.TemplateInfo.GetFullHtmlFieldId("Description");
+    var imgPrev = @ViewData.TemplateInfo.GetFullHtmlFieldId("Preview");
+    var btnRm = @ViewData.TemplateInfo.GetFullHtmlFieldId("btnRemove");
 }
 <script type="text/javascript">
     var thumbpath = '@Url.GetThumbnailBaseUrl()';

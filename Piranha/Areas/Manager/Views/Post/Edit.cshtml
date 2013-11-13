@@ -1,6 +1,7 @@
 ﻿@model Piranha.Models.Manager.PostModels.EditModel
 @using Piranha.Extend;
 @using Piranha.Models.Manager.PostModels;
+@using Piranha.Web
 @section Head {
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.form.js"></script>
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.attachment.js"></script>
@@ -137,14 +138,11 @@
     @Html.HiddenFor(m => m.Post.Updated)
     @Html.HiddenFor(m => m.Post.Published)
     @Html.HiddenFor(m => m.Post.LastPublished)
-    @Html.HiddenFor(m => m.Post.CreatedBy)
-    @Html.HiddenFor(m => m.Post.UpdatedBy)
     @Html.HiddenFor(m => m.Permalink.IsNew)
     @Html.HiddenFor(m => m.Permalink.Id)
     @Html.HiddenFor(m => m.Permalink.NamespaceId)
     @Html.HiddenFor(m => m.Permalink.Type)
     @Html.HiddenFor(m => m.Permalink.Created)
-    @Html.HiddenFor(m => m.Permalink.CreatedBy)
     @Html.Hidden("returl", (string)ViewBag.ReturnUrl)
     <input type="hidden" id="draft" name="draft" value="true" />
 </div>
@@ -296,7 +294,6 @@
                                         @Html.HiddenFor(m => m.Properties[n].ParentId)
                                         @Html.HiddenFor(m => m.Properties[n].Name)
                                         @Html.HiddenFor(m => m.Properties[n].Created)
-                                        @Html.HiddenFor(m => m.Properties[n].CreatedBy)
                                         @Html.HiddenFor(m => m.Properties[n].IsNew)
                                         <div class="input">
                                             @Html.TextBoxFor(m => m.Properties[n].Value)</div>

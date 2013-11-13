@@ -1,5 +1,6 @@
 ﻿@model Piranha.Models.Manager.PageModels.EditModel
 @using Piranha.Extend;
+@using Piranha.Web
 @section Head {
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.form.js"></script>
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.regions.js"></script>
@@ -148,14 +149,11 @@
     @Html.HiddenFor(m => m.Page.Updated)
     @Html.HiddenFor(m => m.Page.Published)
     @Html.HiddenFor(m => m.Page.LastPublished)
-    @Html.HiddenFor(m => m.Page.CreatedBy)
-    @Html.HiddenFor(m => m.Page.UpdatedBy)
     @Html.HiddenFor(m => m.Permalink.IsNew)
     @Html.HiddenFor(m => m.Permalink.Id)
     @Html.HiddenFor(m => m.Permalink.NamespaceId)
     @Html.HiddenFor(m => m.Permalink.Type)
     @Html.HiddenFor(m => m.Permalink.Created)
-    @Html.HiddenFor(m => m.Permalink.CreatedBy)
     @if (!Application.Current.IsMvc) {
     @Html.HiddenFor(m => m.Page.PageView)
     }

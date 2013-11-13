@@ -1,8 +1,9 @@
-﻿@{
+﻿@using Piranha.Web
+@{
     ViewBag.Title = @Piranha.Resources.Account.UpdateTitle;
-    Layout = "" ;
-    
-    var curr = Piranha.Models.SysParam.GetByName("SITE_VERSION") ;
+    Layout = "";
+
+    var curr = Piranha.Models.SysParam.GetByName("SITE_VERSION");
 }
 <!DOCTYPE html>
 <html>

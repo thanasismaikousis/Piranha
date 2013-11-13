@@ -120,18 +120,6 @@ namespace Piranha.Models
 		/// </summary>
 		[Column(Name="sysuser_updated")]
 		public DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the user id that created the record.
-		/// </summary>
-		[Column(Name="sysuser_created_by")]
-		public Guid CreatedBy { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the user id that created the record.
-		/// </summary>
-		[Column(Name="sysuser_updated_by")]
-		public Guid UpdatedBy { get ; set ; }
 		#endregion
 
 		#region Properties
@@ -217,13 +205,8 @@ namespace Piranha.Models
 				if (Id == Guid.Empty)
 					Id = Guid.NewGuid() ;
 				Updated = Created = DateTime.Now ;
-				if (Application.Current.UserProvider.IsAuthenticated)
-					UpdatedBy = CreatedBy = Application.Current.UserProvider.UserId ;
-				else UpdatedBy = CreatedBy = Id ;
 			} else {
 				Updated = DateTime.Now ;
-				if (Application.Current.UserProvider.IsAuthenticated)
-					UpdatedBy = Application.Current.UserProvider.UserId ;
 			}
 			return base.Save(tx);
 		}

@@ -79,18 +79,6 @@ namespace Piranha.Models
 		/// </summary>
 		[Column(Name="extension_updated")]
 		public override DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the user who initially created the extension.
-		/// </summary>
-		[Column(Name="extension_created_by")]
-		public override Guid CreatedBy { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the user who last updated the extension.
-		/// </summary>
-		[Column(Name="extension_updated_by")]
-		public override Guid UpdatedBy { get ; set ; }
 		#endregion
 
 		#region Event handlers

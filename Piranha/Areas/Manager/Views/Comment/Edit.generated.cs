@@ -27,6 +27,12 @@ namespace Piranha.Areas.Manager.Views.Comment
     using System.Web.UI;
     using System.Web.WebPages;
     
+    #line 2 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+    using Piranha.Web;
+    
+    #line default
+    #line hidden
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Manager/Views/Comment/Edit.cshtml")]
     public partial class Edit : System.Web.Mvc.WebViewPage<Piranha.Areas.Manager.Models.CommentEditModel>
@@ -38,10 +44,11 @@ namespace Piranha.Areas.Manager.Views.Comment
         {
 
 
+
             
-            #line 2 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 3 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
   
-    ViewBag.Title = @Piranha.Resources.Comment.EditTitleExisting ;
+    ViewBag.Title = @Piranha.Resources.Comment.EditTitleExisting;
 
 
             
@@ -54,7 +61,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 6 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 7 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
 Write(Html.Partial("Partial/Tabs"));
 
             
@@ -65,7 +72,7 @@ WriteLiteral("\r\n<div class=\"toolbar\">\r\n    <div class=\"inner\">\r\n      
 
 
             
-            #line 10 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 11 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                   Write(Piranha.Resources.Global.ToolbarSave);
 
             
@@ -75,7 +82,7 @@ WriteLiteral("</a></li>\r\n            <li><a href=\"");
 
 
             
-            #line 11 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 12 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                     Write(Url.Action("delete", new { id = Model.Id }));
 
             
@@ -85,7 +92,7 @@ WriteLiteral("\" class=\"delete\">");
 
 
             
-            #line 11 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 12 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                                                                  Write(Piranha.Resources.Global.ToolbarDelete);
 
             
@@ -95,7 +102,7 @@ WriteLiteral("</a></li>\r\n            <li><a href=\"");
 
 
             
-            #line 12 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 13 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                     Write(Url.Action("index", "comment"));
 
             
@@ -105,7 +112,7 @@ WriteLiteral("\" class=\"back\">");
 
 
             
-            #line 12 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 13 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                                                   Write(Piranha.Resources.Global.ToolbarBack);
 
             
@@ -115,7 +122,7 @@ WriteLiteral("</a></li>\r\n            <li><a href=\"");
 
 
             
-            #line 13 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 14 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                     Write(Url.Action("edit", new { id = Model.Id }));
 
             
@@ -125,7 +132,7 @@ WriteLiteral("\" class=\"refresh\">");
 
 
             
-            #line 13 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 14 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                                                                 Write(Piranha.Resources.Global.ToolbarReload);
 
             
@@ -141,7 +148,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 19 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 20 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
    Html.BeginForm() ; 
 
             
@@ -149,7 +156,7 @@ WriteLiteral("\r\n");
             #line hidden
 
             
-            #line 20 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 21 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
 Write(Html.HiddenFor(m => m.Id));
 
             
@@ -159,7 +166,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 21 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 22 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
 Write(Html.HiddenFor(m => m.AuthorName));
 
             
@@ -169,7 +176,7 @@ WriteLiteral("\r\n");
 
 
             
-            #line 22 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 23 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
 Write(Html.HiddenFor(m => m.AuthorEmail));
 
             
@@ -179,7 +186,7 @@ WriteLiteral("\r\n<div class=\"grid_9\">\r\n    <div class=\"box\">\r\n        <
 
 
             
-            #line 25 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 26 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                           Write(Piranha.Resources.Global.Information);
 
             
@@ -190,7 +197,7 @@ WriteLiteral("</h2></div>\r\n        <div class=\"inner\">\r\n            <ul cl
 
 
             
-            #line 28 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 29 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.LabelFor(m => m.Title));
 
             
@@ -200,7 +207,7 @@ WriteLiteral("\r\n                    <div class=\"input\">\r\n                 
 
 
             
-            #line 30 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 31 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                    Write(Html.TextBoxFor(m => m.Title));
 
             
@@ -210,7 +217,7 @@ WriteLiteral("</div>\r\n                    ");
 
 
             
-            #line 31 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 32 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.ValidationMessageFor(m => m.Title));
 
             
@@ -220,7 +227,7 @@ WriteLiteral("\r\n                </li>\r\n                <li>");
 
 
             
-            #line 33 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 34 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.LabelFor(m => m.Status));
 
             
@@ -230,7 +237,7 @@ WriteLiteral("\r\n                    <div class=\"input\">\r\n                 
 
 
             
-            #line 35 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 36 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                    Write(Html.DropDownListFor(m => m.Status, Model.Statuses));
 
             
@@ -240,7 +247,7 @@ WriteLiteral("</div>\r\n                </li>\r\n                <li>");
 
 
             
-            #line 37 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 38 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.LabelFor(m => m.Body));
 
             
@@ -250,7 +257,7 @@ WriteLiteral("\r\n                    <div class=\"input\">\r\n                 
 
 
             
-            #line 39 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 40 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                    Write(Html.TextAreaFor(m => m.Body, new { @rows = 10 }));
 
             
@@ -262,7 +269,7 @@ WriteLiteral("</div>\r\n                </li>\r\n            </ul>\r\n        </
 
 
             
-            #line 47 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 48 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                           Write(Piranha.Resources.Comment.Author);
 
             
@@ -273,7 +280,7 @@ WriteLiteral("</h2></div>\r\n        <div class=\"inner\">\r\n            <ul cl
 
 
             
-            #line 50 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 51 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.LabelFor(m => m.AuthorName));
 
             
@@ -283,7 +290,7 @@ WriteLiteral("\r\n                    <p>");
 
 
             
-            #line 51 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 52 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                   Write(Model.AuthorName);
 
             
@@ -293,7 +300,7 @@ WriteLiteral("</p>\r\n                </li>\r\n                <li>");
 
 
             
-            #line 53 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 54 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                Write(Html.LabelFor(m => m.AuthorEmail));
 
             
@@ -303,7 +310,7 @@ WriteLiteral("\r\n                    <p><a href=\"mailto:");
 
 
             
-            #line 54 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 55 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                   Write(Model.AuthorEmail);
 
             
@@ -313,7 +320,7 @@ WriteLiteral("\">");
 
 
             
-            #line 54 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 55 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
                                                       Write(Model.AuthorEmail);
 
             
@@ -324,7 +331,7 @@ WriteLiteral("</a></p>\r\n                </li>\r\n            </ul>\r\n        
 
 
             
-            #line 60 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
+            #line 61 "..\..\Areas\Manager\Views\Comment\Edit.cshtml"
    Html.EndForm() ; 
             
             #line default

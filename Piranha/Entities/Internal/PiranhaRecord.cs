@@ -25,16 +25,6 @@ namespace Piranha.Models
 		/// Gets/sets the updated date.
 		/// </summary>
 		public abstract DateTime Updated { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the updated by id.
-		/// </summary>
-		public abstract Guid CreatedBy { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the updated by id.
-		/// </summary>
-		public abstract Guid UpdatedBy { get ; set ; }
 		#endregion
 
 		/// <summary>
@@ -57,11 +47,9 @@ namespace Piranha.Models
 				if (IsNew) {
 					if (setdates)
 						Created = DateTime.Now ;
-					CreatedBy = Database.Identity != Guid.Empty ? Database.Identity : Application.Current.UserProvider.UserId ;
 				}
 				if (setdates)
 					Updated = DateTime.Now ;
-				UpdatedBy = Database.Identity != Guid.Empty ? Database.Identity : Application.Current.UserProvider.UserId ;
 
 				return base.Save(tx) ;
 			}

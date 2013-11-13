@@ -1,6 +1,7 @@
 ﻿@model Piranha.Models.Manager.PageModels.EditModel
 @using Piranha.Extend;
 @using Piranha.Models.Manager.PageModels;
+@using Piranha.Web
 @section Head {
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.form.js"></script>
     <script type="text/javascript" src="~/res.ashx/areas/manager/content/js/jquery.regions.js"></script>
@@ -150,14 +151,11 @@
     @Html.HiddenFor(m => m.Page.Updated)
     @Html.HiddenFor(m => m.Page.Published)
     @Html.HiddenFor(m => m.Page.LastPublished)
-    @Html.HiddenFor(m => m.Page.CreatedBy)
-    @Html.HiddenFor(m => m.Page.UpdatedBy)
     @Html.HiddenFor(m => m.Permalink.IsNew)
     @Html.HiddenFor(m => m.Permalink.Id)
     @Html.HiddenFor(m => m.Permalink.NamespaceId)
     @Html.HiddenFor(m => m.Permalink.Type)
     @Html.HiddenFor(m => m.Permalink.Created)
-    @Html.HiddenFor(m => m.Permalink.CreatedBy)
     @if (Model.IsSite) {
     @Html.HiddenFor(m => m.Page.Title)
     @Html.HiddenFor(m => m.Page.ParentId)
@@ -397,7 +395,6 @@
                                         @Html.HiddenFor(m => m.Properties[n].ParentId)
                                         @Html.HiddenFor(m => m.Properties[n].Name)
                                         @Html.HiddenFor(m => m.Properties[n].Created)
-                                        @Html.HiddenFor(m => m.Properties[n].CreatedBy)
                                         @Html.HiddenFor(m => m.Properties[n].IsNew)
                                         <div class="input">
                                             @Html.TextBoxFor(m => m.Properties[n].Value)</div>

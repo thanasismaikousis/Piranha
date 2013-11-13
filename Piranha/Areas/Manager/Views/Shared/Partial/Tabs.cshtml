@@ -1,10 +1,11 @@
 ﻿@using Piranha.WebPages;
+@using Piranha.Web
 @{
-    IList<Manager.MenuItem> items = null ;
-    
+    IList<Manager.MenuItem> items = null;
+
     foreach (var group in Manager.Menu) {
         if (group.IsActive()) {
-            items = group.ItemsForUser() ;
+            items = group.ItemsForUser();
         }
     }
 }

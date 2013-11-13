@@ -1,4 +1,5 @@
 ﻿@model List<Piranha.Models.Content>
+@using Piranha.Web
 @foreach (var content in Model) {
     <li class="@(content.ChildContent.Count > 0 ? (content.HasChild(ViewBag.Expanded) ? "expanded" : "collapsed") : "collapsed")">
         <span class="buttons">

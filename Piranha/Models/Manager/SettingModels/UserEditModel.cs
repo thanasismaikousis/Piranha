@@ -110,7 +110,6 @@ namespace Piranha.Models.Manager.SettingModels
 			
 			using (IDbTransaction tx = Database.OpenTransaction()) {
 				try {
-					User.UpdatedBy = uid ;
 					User.Save(tx) ;
 					if (Password.IsSet) {
 						Password.Id = User.Id ;
