@@ -26,7 +26,12 @@ namespace Piranha.Areas.Manager.Views.Shared
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
+    
+    #line 1 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
     using Piranha.Web;
+    
+    #line default
+    #line hidden
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
     [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/Manager/Views/Shared/_Layout.cshtml")]
@@ -37,152 +42,134 @@ namespace Piranha.Areas.Manager.Views.Shared
         }
         public override void Execute()
         {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
 
-WriteLiteral(" http-equiv=\"content-type\"");
+WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta http-equiv=\"content-type\" content=\"tex" +
+"t/html; charset=utf-8\"/>\r\n    <meta name=\"viewport\" content=\"width=device-width," +
+" initial-scale=1.0, maximum-scale=1.0\">\r\n    <title>");
 
-WriteLiteral(" content=\"text/html; charset=utf-8\"");
-
-WriteLiteral("/>\r\n    <meta");
-
-WriteLiteral(" name=\"viewport\"");
-
-WriteLiteral(" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0\"");
-
-WriteLiteral(">\r\n    <title>");
 
             
-            #line 6 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 7 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
       Write(ViewBag.Title);
 
             
             #line default
             #line hidden
-WriteLiteral("</title>\r\n\r\n    <link");
+WriteLiteral("</title>\r\n\r\n    <link href=\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 248), Tuple.Create("\"", 300)
-, Tuple.Create(Tuple.Create("", 255), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/img/icon.ico")
-, 255), false)
-);
-
-WriteLiteral(" rel=\"icon\"");
-
-WriteLiteral(" type=\"image/x-icon\"");
-
-WriteLiteral(">\r\n    <link");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 344), Tuple.Create("\"", 396)
-, Tuple.Create(Tuple.Create("", 351), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/img/icon.ico")
-, 351), false)
-);
-
-WriteLiteral(" rel=\"shortcut icon\"");
-
-WriteLiteral(" type=\"image/x-icon\"");
-
-WriteLiteral("> \r\n    <link");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 450), Tuple.Create("\"", 512)
-, Tuple.Create(Tuple.Create("", 457), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/css/ext/chosen.min.css")
-, 457), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral("/>\r\n    <link");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 559), Tuple.Create("\"", 637)
-, Tuple.Create(Tuple.Create("", 566), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/css/ext/jquery-ui-1.9.2.custom.min.css")
-, 566), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral(" />\r\n    <link");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 685), Tuple.Create("\"", 742)
-, Tuple.Create(Tuple.Create("", 692), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/css/style.min.css")
-, 692), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral("/>\r\n");
 
             
-            #line 13 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-    
+            #line 9 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/img/icon.ico"));
+
             
             #line default
             #line hidden
+WriteLiteral("\" rel=\"icon\" type=\"image/x-icon\">\r\n    <link href=\"");
+
+
+            
+            #line 10 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/img/icon.ico"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"shortcut icon\" type=\"image/x-icon\"> \r\n    <link href=\"");
+
+
+            
+            #line 11 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/css/ext/chosen.min.css"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\"/>\r\n    <link href=\"");
+
+
+            
+            #line 12 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/css/ext/jquery-ui-1.9.2.custom.min.css"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\" />\r\n    <link href=\"");
+
+
             
             #line 13 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/css/style.min.css"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
+
+
+            
+            #line 14 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
      if (File.Exists(Server.MapPath("~/areas/manager/content/css/style.css"))) {
 
             
             #line default
             #line hidden
-WriteLiteral("    <link");
+WriteLiteral("    <link href=\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 871), Tuple.Create("\"", 915)
-, Tuple.Create(Tuple.Create("", 878), Tuple.Create<System.Object, System.Int32>(Href("~/areas/manager/content/css/style.css")
-, 878), false)
-);
-
-WriteLiteral(" rel=\"stylesheet\"");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral("/>\r\n");
 
             
             #line 15 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+           Write(Href("~/areas/manager/content/css/style.css"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\"/>\r\n");
+
+
+            
+            #line 16 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
     }
 
             
             #line default
             #line hidden
-WriteLiteral("    \r\n    <script");
+WriteLiteral("    \r\n    <script type=\"text/javascript\" src=\"");
 
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1000), Tuple.Create("\"", 1065)
-, Tuple.Create(Tuple.Create("", 1006), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/js/ext/jquery-1.7.2.min.js")
-, 1006), false)
-);
-
-WriteLiteral("></script>\r\n    <script");
-
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1112), Tuple.Create("\"", 1171)
-, Tuple.Create(Tuple.Create("", 1118), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/js/jquery.manager.js")
-, 1118), false)
-);
-
-WriteLiteral("></script>\r\n    <script");
-
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 1218), Tuple.Create("\"", 1284)
-, Tuple.Create(Tuple.Create("", 1224), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/js/ext/chosen.jquery.min.js")
-, 1224), false)
-);
-
-WriteLiteral("></script>\r\n    <script");
-
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteLiteral(">\r\n        var siteroot = \"");
 
             
-            #line 21 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 18 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/ext/jquery-1.7.2.min.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 19 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.manager.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 20 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/ext/chosen.jquery.min.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\">\r\n        var siteroot = \"");
+
+
+            
+            #line 22 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                    Write(Url.Content("~/"));
 
             
@@ -190,8 +177,9 @@ WriteLiteral(">\r\n        var siteroot = \"");
             #line hidden
 WriteLiteral("\";\r\n        var apikey = \"");
 
+
             
-            #line 22 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 23 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                  Write(Html.APIKey("FE868D4F-797C-4E60-B876-64E6FC2424AA"));
 
             
@@ -208,28 +196,20 @@ WriteLiteral(@""";
     </script>
 ");
 
+
             
-            #line 31 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-    
-            
-            #line default
-            #line hidden
-            
-            #line 31 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 32 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
      if (!String.IsNullOrEmpty(ViewBag.Message)) {
 
             
             #line default
             #line hidden
-WriteLiteral("    <script");
+WriteLiteral("    <script type=\"text/javascript\">\r\n        setTimeout(function () {\r\n          " +
+"  $(\".sys-message\").slideUp();\r\n        }, 2000);\r\n    </script>\r\n");
 
-WriteLiteral(" type=\"text/javascript\"");
-
-WriteLiteral(">\r\n        setTimeout(function () {\r\n            $(\".sys-message\").slideUp();\r\n  " +
-"      }, 2000);\r\n    </script>\r\n");
 
             
-            #line 37 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 38 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
     }
 
             
@@ -237,138 +217,94 @@ WriteLiteral(">\r\n        setTimeout(function () {\r\n            $(\".sys-mess
             #line hidden
 WriteLiteral("    ");
 
+
             
-            #line 38 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 39 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Head", false));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</head>\r\n<body>\r\n    <div");
+WriteLiteral("\r\n</head>\r\n<body>\r\n    <div class=\"top\">\r\n        <div class=\"container_12\">\r\n   " +
+"         <div class=\"grid_12 header\">\r\n                <a class=\"home\" href=\"");
 
-WriteLiteral(" class=\"top\"");
 
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"container_12\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"grid_12 header\"");
-
-WriteLiteral(">\r\n                <a");
-
-WriteLiteral(" class=\"home\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 2122), Tuple.Create("\"", 2157)
             
-            #line 44 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2129), Tuple.Create<System.Object, System.Int32>(Url.Action("index", "page")
+            #line 45 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                                 Write(Url.Action("index", "page"));
+
             
             #line default
             #line hidden
-, 2129), false)
-);
+WriteLiteral("\">\r\n                    <img src=\"");
 
-WriteLiteral(">\r\n                    <img");
-
-WriteAttribute("src", Tuple.Create(" src=\"", 2185), Tuple.Create("\"", 2236)
-, Tuple.Create(Tuple.Create("", 2191), Tuple.Create<System.Object, System.Int32>(Href("~/res.ashx/areas/manager/content/img/logo.png")
-, 2191), false)
-);
-
-WriteLiteral(" alt=\"Piranha CMS\"");
-
-WriteLiteral(" /></a>\r\n                <div");
-
-WriteLiteral(" class=\"site-title\"");
-
-WriteLiteral(">\r\n                    <span>");
 
             
-            #line 47 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 46 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                         Write(Href("~/res.ashx/areas/manager/content/img/logo.png"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" alt=\"Piranha CMS\" /></a>\r\n                <div class=\"site-title\">\r\n           " +
+"         <span>");
+
+
+            
+            #line 48 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                      Write(Piranha.WebPages.WebPiranha.CurrentSite.MetaTitle);
 
             
             #line default
             #line hidden
-WriteLiteral("</span>\r\n                    <a");
+WriteLiteral("</span>\r\n                    <a class=\"public-site\" target=\"preview\" href=\"");
 
-WriteLiteral(" class=\"public-site\"");
-
-WriteLiteral(" target=\"preview\"");
-
-WriteAttribute("href", Tuple.Create(" href=\"", 2450), Tuple.Create("\"", 2498)
-            
-            #line 48 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2457), Tuple.Create<System.Object, System.Int32>(Piranha.WebPages.WebPiranha.GetSiteUrl()
-            
-            #line default
-            #line hidden
-, 2457), false)
-);
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                        ");
 
             
             #line 49 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                                                             Write(Piranha.WebPages.WebPiranha.GetSiteUrl());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\">\r\n                        ");
+
+
+            
+            #line 50 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                    Write(Piranha.WebPages.WebPiranha.GetSiteUrl());
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                </div>\r\n");
+WriteLiteral("</a>\r\n                </div>\r\n                ");
 
-WriteLiteral("                ");
 
             
-            #line 51 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 52 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(Html.Partial("Partial/Menu"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"title\">\r\n      " +
+"  <div class=\"container_12\">\r\n            <div class=\"grid_12\"><h1>");
 
-WriteLiteral(" class=\"title\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"container_12\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"grid_12\"");
-
-WriteLiteral("><h1>");
 
             
-            #line 57 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 58 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                 Write(ViewBag.Title);
 
             
             #line default
             #line hidden
-WriteLiteral("</h1></div>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral("</h1></div>\r\n        </div>\r\n    </div>\r\n    <div class=\"body\">\r\n        <div cla" +
+"ss=\"container_12\">\r\n            <div class=\"grid_12 toolbar-container\">\r\n       " +
+"         ");
 
-WriteLiteral(" class=\"body\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"container_12\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"grid_12 toolbar-container\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                ");
 
             
-            #line 63 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 64 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(RenderSection("Toolbar", false));
 
             
@@ -376,48 +312,30 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n");
 
+
             
-            #line 65 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 65 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 66 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
              if (!String.IsNullOrEmpty(ViewBag.Message)) {
 
             
             #line default
             #line hidden
-WriteLiteral("            <div");
+WriteLiteral("            <div class=\"grid_12 sys-message\">\r\n                <div class=\"box");
 
-WriteLiteral(" class=\"grid_12 sys-message\"");
 
-WriteLiteral(">\r\n                <div");
-
-WriteAttribute("class", Tuple.Create(" class=\"", 3155), Tuple.Create("\"", 3242)
-, Tuple.Create(Tuple.Create("", 3163), Tuple.Create("box", 3163), true)
             
-            #line 67 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3166), Tuple.Create<System.Object, System.Int32>(!String.IsNullOrEmpty(ViewBag.MessageCss) ? " " + ViewBag.MessageCss : ""
+            #line 68 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+                           Write(!String.IsNullOrEmpty(ViewBag.MessageCss) ? " " + ViewBag.MessageCss : "");
+
             
             #line default
             #line hidden
-, 3166), false)
-);
+WriteLiteral("\">\r\n                    <div class=\"inner\">\r\n                        <div class=\"" +
+"ico\"></div><p>");
 
-WriteLiteral(">\r\n                    <div");
-
-WriteLiteral(" class=\"inner\"");
-
-WriteLiteral(">\r\n                        <div");
-
-WriteLiteral(" class=\"ico\"");
-
-WriteLiteral("></div><p>");
 
             
-            #line 69 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 70 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                              Write(ViewBag.Message);
 
             
@@ -425,88 +343,54 @@ WriteLiteral("></div><p>");
             #line hidden
 WriteLiteral("</p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n");
 
+
             
-            #line 73 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 74 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
             }
 
             
             #line default
             #line hidden
-WriteLiteral("            <div");
+WriteLiteral("            <div class=\"content left\">\r\n                ");
 
-WriteLiteral(" class=\"content left\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                ");
 
             
-            #line 75 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 76 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(RenderBody());
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div");
+WriteLiteral(@"
+            </div>
+        </div>
+    </div>
+    <div id=""boxSysMsg"" class=""floatbox"">
+        <div class=""bg""></div>
+        <div class=""box"">
+            <div class=""title""><h2 id=""SysMsgTitle""></h2></div>
+            <div class=""inner"">
+                <p id=""SysMsgBody""></p>
+            </div>
+        </div>
+    </div>
+    <div id=""boxDialog"" class=""floatbox"">
+        <div class=""bg"" style=""background-color: transparent""></div>
+        <div class=""box"" style=""min-width: 510px;min-height:260px;"">
+        </div>
+    </div>
+    ");
 
-WriteLiteral(" id=\"boxSysMsg\"");
-
-WriteLiteral(" class=\"floatbox\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"bg\"");
-
-WriteLiteral("></div>\r\n        <div");
-
-WriteLiteral(" class=\"box\"");
-
-WriteLiteral(">\r\n            <div");
-
-WriteLiteral(" class=\"title\"");
-
-WriteLiteral("><h2");
-
-WriteLiteral(" id=\"SysMsgTitle\"");
-
-WriteLiteral("></h2></div>\r\n            <div");
-
-WriteLiteral(" class=\"inner\"");
-
-WriteLiteral(">\r\n                <p");
-
-WriteLiteral(" id=\"SysMsgBody\"");
-
-WriteLiteral("></p>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div");
-
-WriteLiteral(" id=\"boxDialog\"");
-
-WriteLiteral(" class=\"floatbox\"");
-
-WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"bg\"");
-
-WriteLiteral(" style=\"background-color: transparent\"");
-
-WriteLiteral("></div>\r\n        <div");
-
-WriteLiteral(" class=\"box\"");
-
-WriteLiteral(" style=\"min-width: 510px;min-height:260px;\"");
-
-WriteLiteral(">\r\n        </div>\r\n    </div>\r\n");
-
-WriteLiteral("    ");
 
             
-            #line 93 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 94 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Foot", false));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n</body>\r\n</html>\r\n");
+
 
         }
     }

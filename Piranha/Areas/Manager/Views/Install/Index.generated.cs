@@ -65,14 +65,57 @@ WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta http-equiv=\"cont
             
             #line default
             #line hidden
-WriteLiteral(@"</title>
+WriteLiteral("</title>\r\n\r\n    <link href=\"");
 
-    <link href=""~/res.ashx/areas/manager/content/img/icon.ico"" rel=""icon"" type=""image/x-icon"">
-    <link href=""~/res.ashx/areas/manager/content/img/icon.ico"" rel=""shortcut icon"" type=""image/x-icon""> 
-    <link href=""~/res.ashx/areas/manager/content/css/style.min.css"" rel=""stylesheet"" type=""text/css""/>
 
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/ext/jquery-1.7.2.min.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.manager.js""></script>
+            
+            #line 12 "..\..\Areas\Manager\Views\Install\Index.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/img/icon.ico"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"icon\" type=\"image/x-icon\">\r\n    <link href=\"");
+
+
+            
+            #line 13 "..\..\Areas\Manager\Views\Install\Index.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/img/icon.ico"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"shortcut icon\" type=\"image/x-icon\"> \r\n    <link href=\"");
+
+
+            
+            #line 14 "..\..\Areas\Manager\Views\Install\Index.cshtml"
+           Write(Href("~/res.ashx/areas/manager/content/css/style.min.css"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\" rel=\"stylesheet\" type=\"text/css\"/>\r\n\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 16 "..\..\Areas\Manager\Views\Install\Index.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/ext/jquery-1.7.2.min.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 17 "..\..\Areas\Manager\Views\Install\Index.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.manager.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"""></script>
     <script type=""text/javascript"">
         $(document).ready(function () {
             $("".message"").click(function () { $(this).fadeOut(""medium""); });

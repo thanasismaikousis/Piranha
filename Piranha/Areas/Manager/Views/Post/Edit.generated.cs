@@ -61,13 +61,57 @@ namespace Piranha.Areas.Manager.Views.Post
 
 DefineSection("Head", () => {
 
-WriteLiteral(@"
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.form.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.attachment.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.media.dialog.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.comments.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/ext/jquery.equalheights.js""></script>
-    ");
+WriteLiteral("\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 6 "..\..\Areas\Manager\Views\Post\Edit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.form.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 7 "..\..\Areas\Manager\Views\Post\Edit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.attachment.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 8 "..\..\Areas\Manager\Views\Post\Edit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.media.dialog.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 9 "..\..\Areas\Manager\Views\Post\Edit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.comments.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 10 "..\..\Areas\Manager\Views\Post\Edit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/ext/jquery.equalheights.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    ");
 
 
             

@@ -360,7 +360,6 @@ namespace Piranha.Models.Manager.PostModels
 			if (!Post.IsNew && EnableComments) {
 				using (var db = new DataContext()) {
 					Comments = db.Comments.
-						Include("CreatedBy").
 						Where(c => c.ParentId == Post.Id && c.ParentIsDraft == false).
 						OrderByDescending(c => c.Created).ToList() ;
 				}

@@ -58,14 +58,19 @@ namespace Piranha.Areas.Manager.Views.Template
 
 DefineSection("Head", () => {
 
-WriteLiteral(@"
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.template.js""></script>
-    <script type=""text/javascript"">
-        $(document).ready(function () {
-            $('#Template_Name').focus();
-        });
-    </script>
-");
+WriteLiteral("\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 8 "..\..\Areas\Manager\Views\Template\PostEdit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.template.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\">\r\n        $(document).ready(funct" +
+"ion () {\r\n            $(\'#Template_Name\').focus();\r\n        });\r\n    </script>\r\n" +
+"");
 
 
 });

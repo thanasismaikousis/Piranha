@@ -58,15 +58,39 @@ namespace Piranha.Areas.Manager.Views.Template
 
 DefineSection("Head", () => {
 
-WriteLiteral(@"
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.template.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/jquery.regiontemplate.js""></script>
-    <script type=""text/javascript"" src=""~/res.ashx/areas/manager/content/js/ext/json2.js""></script>
-    <script type=""text/javascript"">
-        /**
-         * This var is needed by the regiontemplate script.
-         */
-        var templateid = '");
+WriteLiteral("\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 8 "..\..\Areas\Manager\Views\Template\PageEdit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.template.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 9 "..\..\Areas\Manager\Views\Template\PageEdit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/jquery.regiontemplate.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\" src=\"");
+
+
+            
+            #line 10 "..\..\Areas\Manager\Views\Template\PageEdit.cshtml"
+                                   Write(Href("~/res.ashx/areas/manager/content/js/ext/json2.js"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\">\r\n        /**\r\n         * This va" +
+"r is needed by the regiontemplate script.\r\n         */\r\n        var templateid =" +
+" \'");
 
 
             
