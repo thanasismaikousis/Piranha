@@ -195,8 +195,7 @@ namespace Piranha.WebPages
 					Permission = "ADMIN_SITETREE" },
 			}},
 			new MenuGroup() { InternalId = "System", Name = @Resources.Global.MenuSystem, CssClass = "ico system", Items = new List<MenuItem>() {
-				new MenuItem() { InternalId = "Users", Name = @Resources.Tabs.SystemUsers, Action = "userlist", Controller = "settings", 
-					Permission = "ADMIN_USER", SelectedActions = "userlist, usergroup, user, deleteuser" },
+				new MenuItem() { InternalId = "Roles", Name = "TODO Roles", Action = "index", Controller = "role" },
 				new MenuItem() { InternalId = "Groups", Name = @Resources.Tabs.SystemGroups, Action = "grouplist", Controller = "settings", 
 					Permission = "ADMIN_GROUP", SelectedActions = "grouplist, group, deletegroup" },
 				new MenuItem() { InternalId = "Permissions", Name = @Resources.Tabs.SystemAccess, Action = "accesslist", Controller = "settings", 

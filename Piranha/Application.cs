@@ -5,6 +5,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 using Piranha.Web;
 using Piranha.Web.Handlers;
@@ -49,11 +50,6 @@ namespace Piranha
         public readonly Log.ILogProvider LogProvider ;
 
 		/// <summary>
-		/// The currently active user provider.
-		/// </summary>
-		internal readonly Security.IUserProvider UserProvider = new Security.LocalUserProvider() ;
-
-		/// <summary>
 		/// The manager resource handler.
 		/// </summary>
 		internal readonly ResourceHandler Resources = new ResourceHandler() ;
@@ -76,6 +72,11 @@ namespace Piranha
 		/// </summary>
 		[Import(typeof(IClientFramework), AllowDefault=true)]
 		public IClientFramework ClientFramework { get ; private set ; }
+
+		/// <summary>
+		/// Get the current security manager.
+		/// </summary>
+		public Security.ISecurityManager SecurityManager { get ; private set ; }
 
 		/// <summary>
 		/// Gets if the currently installed client framework is intended for WebPages.
@@ -140,6 +141,10 @@ namespace Piranha
                 else throw new TypeAccessException("LogProvider " + Config.LogProvider.TypeName + " was not found");
             }
 
+			// Create the dummy security manager
+			SecurityManager = new Security.DummyManager() ;
+
+            // Register all request handlers
 			RegisterHandlers() ;
 		}
 	
@@ -159,6 +164,20 @@ namespace Piranha
 			Handlers.Add("archive", "ARCHIVE", new ArchiveHandler()) ;
 			Handlers.Add("rss", "RSS", new RssHandler()) ;
 			Handlers.Add("sitemap.xml", "SITEMAP", new SitemapHandler()) ;
+		}
+
+		/// <summary>
+		/// Initializes the security manager.
+		/// </summary>
+		/// <typeparam name="TUser">The user entity</typeparam>
+		/// <typeparam name="TRole">The role entity</typeparam>
+		/// <typeparam name="TContext">The security context</typeparam>
+		public void InitSecurity<TUser, TRole, TContext>()
+			where TUser : IdentityUser
+			where TRole : IdentityRole
+			where TContext : IdentityDbContext<TUser>
+		{ 
+			SecurityManager = new Security.SecurityManager<TUser, TRole, TContext>() ;
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace Piranha.Web
 			string failurl = Request["failureurl"] ;
 			bool persist = Request["remeberme"] == "1" ;
 
-			if (!SysUser.LoginUser(login, passwd, persist) && !String.IsNullOrEmpty(failurl))
+			if (!Piranha.Application.Current.SecurityManager.SignIn(login, passwd, persist) && !String.IsNullOrEmpty(failurl))
 				return Redirect(failurl) ;
 
 			if (!String.IsNullOrEmpty(returl))
@@ -38,7 +38,7 @@ namespace Piranha.Web
 		public ActionResult Logout() {
 			string returl = Request["returnurl"] ;
 
-			FormsAuthentication.SignOut() ;
+			Piranha.Application.Current.SecurityManager.SignOut() ;
 			Session.Clear() ;
 
 			if (!String.IsNullOrEmpty(returl))
@@ -47,6 +47,9 @@ namespace Piranha.Web
 		}
 
 		public ActionResult NewPassword() {
+            /*
+             * TODO: Security has to be rewritten
+             * 
 			string login = Request["login"];
 			string returl = Request["returnurl"];
 			string failurl = Request["failureurl"];
@@ -70,6 +73,7 @@ namespace Piranha.Web
 			}
 			if (!String.IsNullOrEmpty(failurl))
 				return Redirect(failurl);
+             */
 			return Redirect("~/");
 		} 
     }

@@ -48,11 +48,6 @@ namespace Piranha.Entities
 		public Group Parent { get ; set ; }
 
 		/// <summary>
-		/// Gets/sets the users who belong to the group.
-		/// </summary>
-		public IList<User> Users { get ; set ; }
-
-		/// <summary>
 		/// Gets/sets the permissions attached to the group.
 		/// </summary>
 		public IList<Permission> Permissions { get ; set ; }

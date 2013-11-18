@@ -25,7 +25,6 @@ namespace Piranha
 
 		#region DbSets
 		// External DbSets
-		public DbSet<Entities.User> Users { get ; set ; }
 		public DbSet<Entities.Group> Groups { get ; set ; }
 		public DbSet<Entities.Permission> Permissions { get ; set ; }
 		public DbSet<Entities.Param> Params { get ; set ; }
@@ -61,56 +60,10 @@ namespace Piranha
 		}
 
 		/// <summary>
-		/// Logs in the given user to the current data context.
-		/// </summary>
-		/// <param name="login">The username</param>
-		/// <param name="password">The password</param>
-		/// <returns>Whether the login was successful</returns>
-		public bool Login(string login, string password) {
-			var usr = Models.SysUser.Authenticate(login, password) ;
-
-			if (usr != null) {
-				Identity = usr.Id ;
-				return true ;
-			}
-			return false ;
-		}
-
-		/// <summary>
-		/// Logs in the user with the given encrypted api key to the current data context.
-		/// </summary>
-		/// <param name="apiKey">The encrypted api key</param>
-		/// <returns>Whether the login was successful</returns>
-		public bool Login(string apiKey) {
-			var id = Web.APIKeys.GetUserId(apiKey) ;
-
-			if (id.HasValue) {
-				Identity = id.Value ;
-				return true ;
-			}
-			return false ;
-		}
-
-		/// <summary>
-		/// Logs in the default sys user.
-		/// </summary>
-		public void LoginSys() {
-			Identity = Config.SysUserId ;
-		}
-
-		/// <summary>
-		/// Logs out the current user.
-		/// </summary>
-		public void Logout() {
-			Identity = Guid.Empty ;
-		}
-
-		/// <summary>
 		/// Initializes the current model.
 		/// </summary>
 		/// <param name="modelBuilder">The model builder</param>
 		protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-			modelBuilder.Configurations.Add(new Entities.Maps.UserMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.GroupMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.PermissionMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.ParamMap()) ;

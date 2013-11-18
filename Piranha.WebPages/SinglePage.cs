@@ -76,6 +76,9 @@ namespace Piranha.WebPages
 				cached = ClientCache.HandleClientCache(HttpContext.Current, WebPiranha.GetCulturePrefix() + page.Id.ToString(), mod) ;
 			}
 			// Check for disabled groups
+            /*
+             * TODO: Security has to be rewritten
+             * 
 			if (page.DisabledGroups.Contains(User.GetProfile().GroupId)) {
 				SysParam param = SysParam.GetByName("LOGIN_PAGE") ;
 				if (param != null)
@@ -83,6 +86,7 @@ namespace Piranha.WebPages
 				else Response.Redirect("~/", false) ;
 				HttpContext.Current.Response.EndClean() ;
 			}
+             */
 			// Load the model if the page wasn't cached
 			if (!cached)
 				InitModel(PageModel.Get<T>(page)) ;

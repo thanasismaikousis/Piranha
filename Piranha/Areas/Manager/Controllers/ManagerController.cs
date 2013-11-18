@@ -63,7 +63,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="filterContext"></param>
 		protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext) {
-			if (Application.Current.UserProvider.IsAuthenticated && User.HasAccess("ADMIN")) {
+			if (Application.Current.SecurityManager.IsAuthenticated && Application.Current.SecurityManager.IsAdmin()) {
 				// Get methodinfo for current action.
 				MethodInfo m = null ;
 

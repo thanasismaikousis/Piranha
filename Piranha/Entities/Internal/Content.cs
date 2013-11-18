@@ -460,7 +460,7 @@ namespace Piranha.Models
 		public virtual bool SaveAndPublish(MediaFileContent content, System.Data.IDbTransaction tx = null) {
 			//var user = HttpContext.Current != null ? HttpContext.Current.User : null ;
 
-			if (Database.Identity != Guid.Empty || Application.Current.UserProvider.IsAuthenticated) {
+			if (Application.Current.SecurityManager.IsAuthenticated) {
 				// Set file meta information
 				SetFileMeta(content) ;
 

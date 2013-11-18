@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Web;
 
 namespace Piranha.Entities
 {
@@ -53,7 +54,7 @@ namespace Piranha.Entities
 		/// <param name="db">The db context</param>
 		/// <param name="state">The current entity state</param>
 		public override void OnSave(DataContext db, EntityState state) {
-			if (db.Identity != Guid.Empty || Application.Current.UserProvider.IsAuthenticated || AllowAnonymous) {
+			if (db.Identity != Guid.Empty || Application.Current.SecurityManager.IsAuthenticated || AllowAnonymous) {
 				if (state == EntityState.Added) {
 					if (Id == Guid.Empty)
 						Id = Guid.NewGuid() ;
@@ -69,7 +70,7 @@ namespace Piranha.Entities
 		/// </summary>
 		/// <param name="db">The db context</param>
 		public override void OnDelete(DataContext db) {
-			if (db.Identity == Guid.Empty && !Application.Current.UserProvider.IsAuthenticated && !AllowAnonymous)
+			if (db.Identity == Guid.Empty && !Application.Current.SecurityManager.IsAuthenticated && !AllowAnonymous)
 				throw new UnauthorizedAccessException("User must be logged in to delete entity") ;
 		}
 

@@ -13,9 +13,11 @@ namespace Piranha
 	public static class Config
 	{
 		#region Members
-		private static string[] namespaces = null;
+		private static string[] namespaces = null ;
+		private static string[] roles = null ;
 		private static object nsmutex = new object() ;
-        private static ConfigProvider mediaprovider = null ;
+		private static object rlmutex = new object() ;
+		private static ConfigProvider mediaprovider = null ;
 		private static ConfigProvider mediaCacheProvider = null ; 
 		private static ConfigProvider cacheProvider = null ;
         private static ConfigProvider logProvider = null ;
@@ -81,6 +83,33 @@ namespace Piranha
 					}
 				}
 				return namespaces ;
+			}
+		}
+
+		/// <summary>
+		/// Gets the roles configured for the manager interface.
+		/// </summary>
+		public static string[] ManagerRoles {
+			get {
+				if (roles != null)
+					return roles ;
+
+				lock (rlmutex) {
+					if (roles == null) {
+						var str = config.Settings.ManagerRoles.Value ;
+
+						if (!String.IsNullOrEmpty(str)) {
+							var tmp = str.Split(new char[] { ',' }) ;
+
+							for (int n = 0; n < tmp.Length; n++)
+								tmp[n] = tmp[n].Trim() ;
+							roles = tmp ;
+						} else {
+							roles = new string[0] ;
+						}
+					}
+				}
+				return roles ;
 			}
 		}
 

@@ -87,12 +87,16 @@ namespace Piranha.Mvc
 						WebPages.WebPiranha.GetCulturePrefix() + page.Id.ToString(), mod) ;
 				}
 				// Check for disabled groups
+                /*
+                 * TODO: Security has to be rewritten
+                 * 
 				if (page.DisabledGroups.Contains(User.GetProfile().GroupId)) {
 					SysParam param = SysParam.GetByName("LOGIN_PAGE") ;
 					if (param != null)
 						context.Result = Redirect(param.Value) ;
 					else context.Result = Redirect("~/") ;
 				}
+                 */
 			}
 		}
 	}

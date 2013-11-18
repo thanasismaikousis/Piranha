@@ -19,8 +19,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Default action
 		/// </summary>
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
 			// Check for existing installation.
 			try {
 				if (Data.Database.InstalledVersion < Data.Database.CurrentVersion)
@@ -30,9 +29,8 @@ namespace Piranha.Areas.Manager.Controllers
 				ViewBag.Version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion ;
 
 				// Check if user is logged in and has permissions to the manager
-				if (Application.Current.UserProvider.IsAuthenticated && User.HasAccess("ADMIN")) {
-					var startpage = WebPages.Manager.Menu[0].Items[0] ;
-					return RedirectToAction(startpage.Action, startpage.Controller) ;
+				if (Application.Current.SecurityManager.IsAuthenticated && Application.Current.SecurityManager.IsAdmin()) {
+					return RedirectToAction("index", "managerstart") ;
 				}
 	            return View("Index") ;
 			} catch {}
@@ -47,19 +45,9 @@ namespace Piranha.Areas.Manager.Controllers
 		public ActionResult Login(LoginModel m) {
 			// Authenticate the user
 			if (ModelState.IsValid) {
-				SysUser user = SysUser.Authenticate(m.Login, m.Password) ;
-				if (user != null) {
-					FormsAuthentication.SetAuthCookie(user.Id.ToString(), m.RememberMe) ;
-					HttpContext.Session[PiranhaApp.USER] = user ;
-
-					// Redirect after logon
-					/*
-					var startpage =  WebPages.Manager.Menu[0].Items[0] ;
-
-					return RedirectToAction(startpage.Action, startpage.Controller) ;
-					 */
+				if (Application.Current.SecurityManager.SignIn(m.Login, m.Password, m.RememberMe)) { 
 					return RedirectToAction("index", "managerstart") ;
-				} else {
+				} else { 
 					ViewBag.Message = @Piranha.Resources.Account.MessageLoginFailed ;
 					ViewBag.MessageCss = "error" ;
 				}
@@ -74,9 +62,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Logs out the current user.
 		/// </summary>
 		public ActionResult Logout() {
-			FormsAuthentication.SignOut() ;
-			Session.Clear() ;
-			Session.Abandon() ;
+			Application.Current.SecurityManager.SignOut() ;
 
 			return RedirectToAction("index") ;
 		}

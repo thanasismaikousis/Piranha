@@ -21,11 +21,6 @@ namespace Piranha.Models.Manager.SettingModels
 		/// Gets/sets of all of the other groups.
 		/// </summary>
 		public SelectList Groups { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the members of the group.
-		/// </summary>
-		public List<SysUser> Members { get ; set ; }
 		#endregion
 
 		/// <summary>
@@ -54,8 +49,6 @@ namespace Piranha.Models.Manager.SettingModels
 
 			m.Group   = SysGroup.GetSingle(id) ;
 			m.Groups  = new SelectList(groups, "Id", "Name", m.Group.ParentId) ;
-			m.Members = SysUser.GetFields("sysuser_id, sysuser_firstname, sysuser_surname", 
-				"sysuser_group_id=@0", m.Group.Id) ;
 
 			return m ;
 		}
@@ -86,14 +79,6 @@ namespace Piranha.Models.Manager.SettingModels
 				} catch { tx.Rollback() ; return false ; }
 			}
 			return true ;
-		}
-
-		/// <summary>
-		/// Refreshes the model.
-		/// </summary>
-		public void Refresh() {
-			Members = SysUser.GetFields("sysuser_id, sysuser_firstname, sysuser_surname", 
-				"sysuser_group_id=@0", Group.Id) ;
 		}
 	}
 }

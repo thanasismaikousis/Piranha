@@ -60,7 +60,22 @@
     <Reference Include="MarkdownSharp">
       <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RazorGenerator.Mvc.2.2.1\lib\net40\RazorGenerator.Mvc.dll</HintPath>
@@ -138,6 +153,7 @@
     <Compile Include="Areas\Manager\Controllers\ManagerStartController.cs" />
     <Compile Include="Areas\Manager\Controllers\PageController.cs" />
     <Compile Include="Areas\Manager\Controllers\PostController.cs" />
+    <Compile Include="Areas\Manager\Controllers\RoleController.cs" />
     <Compile Include="Areas\Manager\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Manager\Controllers\SiteTreeController.cs" />
     <Compile Include="Areas\Manager\Controllers\TemplateController.cs" />
@@ -147,6 +163,7 @@
     <Compile Include="Areas\Manager\Models\CommentSettingsModel.cs" />
     <Compile Include="Areas\Manager\Models\LinkDialogModel.cs" />
     <Compile Include="Areas\Manager\Models\PostListModel.cs" />
+    <Compile Include="Areas\Manager\Models\Role\ListModel.cs" />
     <Compile Include="Areas\Manager\Models\SiteTreeEditModel.cs" />
     <Compile Include="Areas\Manager\Models\SiteTreeListModel.cs" />
     <Compile Include="Areas\Manager\Views\Account\Index.generated.cs">
@@ -304,6 +321,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Manager\Views\Role\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Manager\Views\Settings\Access.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -338,16 +360,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ParamList.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\User.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>User.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\UserList.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UserList.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Areas\Manager\Views\Shared\EditorTemplates\Extension.generated.cs">
       <AutoGen>True</AutoGen>
@@ -478,11 +490,11 @@
     <Compile Include="Entities\Internal\Relation.cs" />
     <Compile Include="Entities\Internal\Sitemap.cs" />
     <Compile Include="Entities\Internal\SysAccess.cs" />
-    <Compile Include="Entities\Internal\SysGroup.cs" />
+    <Compile Include="Entities\Internal\SysGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Entities\Internal\SysLog.cs" />
     <Compile Include="Entities\Internal\SysParam.cs" />
-    <Compile Include="Entities\Internal\SysUser.cs" />
-    <Compile Include="Entities\Internal\SysUserPassword.cs" />
     <Compile Include="Entities\Internal\Upload.cs" />
     <Compile Include="Entities\Log.cs" />
     <Compile Include="Entities\Maps\CategoryMap.cs" />
@@ -504,7 +516,6 @@
     <Compile Include="Entities\Maps\RegionTemplateMap.cs" />
     <Compile Include="Entities\Maps\SiteTreeMap.cs" />
     <Compile Include="Entities\Maps\UploadMap.cs" />
-    <Compile Include="Entities\Maps\UserMap.cs" />
     <Compile Include="Entities\Media.cs" />
     <Compile Include="Entities\Namespace.cs" />
     <Compile Include="Entities\Page.cs" />
@@ -522,7 +533,6 @@
     <Compile Include="Entities\SiteTree.cs" />
     <Compile Include="Entities\StandardEntity.cs" />
     <Compile Include="Entities\Upload.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Extend\PostType.cs" />
     <Compile Include="Extend\IPageType.cs" />
     <Compile Include="Extend\IPostType.cs" />
@@ -531,6 +541,7 @@
     <Compile Include="Extend\Regions\MarkdownRegion.cs" />
     <Compile Include="Extend\Regions\PostModelRegion.cs" />
     <Compile Include="Extend\RegionType.cs" />
+    <Compile Include="Hooks.cs" />
     <Compile Include="IO\IMediaCacheProvider.cs" />
     <Compile Include="IO\LocalMediaCacheProvider.cs" />
     <Compile Include="IO\LocalMediaProvider.cs" />
@@ -575,8 +586,6 @@
     <Compile Include="Models\Manager\SettingModels\GroupListModel.cs" />
     <Compile Include="Models\Manager\SettingModels\ParamEditModel.cs" />
     <Compile Include="Models\Manager\SettingModels\ParamListModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\UserEditModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\UserListModel.cs" />
     <Compile Include="Models\Manager\TemplateModels\PageEditModel.cs" />
     <Compile Include="Models\Manager\TemplateModels\PageListModel.cs" />
     <Compile Include="Models\Manager\TemplateModels\PostEditModel.cs" />
@@ -677,8 +686,10 @@
     <Compile Include="Rest\PostService.cs" />
     <Compile Include="Rest\PostTemplateService.cs" />
     <Compile Include="Rest\SitemapServices.cs" />
-    <Compile Include="Security\IUserProvider.cs" />
-    <Compile Include="Security\LocalUserProvider.cs" />
+    <Compile Include="Security\DummyManager.cs" />
+    <Compile Include="Security\ISecurityManager.cs" />
+    <Compile Include="Security\SecurityManager.cs" />
+    <Compile Include="Security\SecurityRole.cs" />
     <Compile Include="WebPages\Hooks.cs" />
     <Compile Include="WebPages\Manager.cs" />
     <Compile Include="Web\Handlers\ArchiveHandler.cs" />
@@ -695,8 +706,6 @@
     <Compile Include="Web\Handlers\ThumbnailHandler.cs" />
     <Compile Include="Web\Handlers\UploadHandler.cs" />
     <Compile Include="WebPages\WebPiranha.cs" />
-    <Compile Include="Web\APIKeyAuthorization.cs" />
-    <Compile Include="Web\APIKeys.cs" />
     <Compile Include="Web\AppCommentController.cs" />
     <Compile Include="Web\ApplicationModule.cs" />
     <Compile Include="Web\AuthController.cs" />
@@ -1095,14 +1104,6 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>ParamList.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Manager\Views\Settings\User.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>User.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Settings\UserList.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>UserList.generated.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\Manager\Views\Shared\EditorTemplates\Extension.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Extension.generated.cs</LastGenOutput>
@@ -1272,6 +1273,13 @@
     <Content Include="Areas\Manager\Views\Extensions\PostModelRegion.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>PostModelRegion.generated.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Areas\Manager\Views\Role\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

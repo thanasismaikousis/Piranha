@@ -106,8 +106,8 @@ namespace Piranha.Web
 			/**
 			 * Check if hook is attached.
 			 */
-			if (Hooks.Head.Render != null)
-				Hooks.Head.Render(this, str, CurrentPage, CurrentPost) ;
+			if (Hooks.UI.Head.Render != null)
+				Hooks.UI.Head.Render(this, str, CurrentPage, CurrentPost) ;
 
 			return new HtmlString(str.ToString()) ;
 		}
@@ -359,40 +359,14 @@ namespace Piranha.Web
 						Current.Id, StartLevel) ;
 				}
 				if (sm != null) {
-					if (Hooks.Breadcrumb.RenderStart != null)
-						Hooks.Breadcrumb.RenderStart(this, str) ;
+					if (Hooks.UI.Breadcrumb.RenderStart != null)
+						Hooks.UI.Breadcrumb.RenderStart(this, str) ;
 					RenderBreadcrumb(Current, sm, str) ;
-					if (Hooks.Breadcrumb.RenderEnd != null)
-						Hooks.Breadcrumb.RenderEnd(this, str) ;
+					if (Hooks.UI.Breadcrumb.RenderEnd != null)
+						Hooks.UI.Breadcrumb.RenderEnd(this, str) ;
 				}
 			}
 			return new HtmlString(str.ToString()) ;
-		}
-
-		/// <summary>
-		/// Gets an encrypted API-key valid for 30 minutes.
-		/// </summary>
-		/// <param name="apiKey">The API-key</param>
-		/// <returns>The ecnrypted key</returns>
-		public IHtmlString APIKey(Guid apiKey) {
-			return new HtmlString(HttpUtility.UrlEncode(APIKeys.EncryptApiKey(apiKey))) ;
-		}
-
-		/// <summary>
-		/// Gets an ecrypted API-key valid for 30 minutes. If no API-key is provided
-		/// the key for the currently logged in user is used.
-		/// </summary>
-		/// <param name="apiKey"></param>
-		/// <returns></returns>
-		public IHtmlString APIKey(string apiKey = "") {
-			if (String.IsNullOrEmpty(apiKey)) {
-				var user = HttpContext.Current.User ;
-
-				if (Application.Current.UserProvider.IsAuthenticated && user.GetProfile().APIKey != Guid.Empty)
-					return APIKey(user.GetProfile().APIKey) ;
-				return new HtmlString("") ;
-			}
-			return APIKey(new Guid(apiKey)) ;
 		}
 
 		#region Private methods
@@ -427,8 +401,8 @@ namespace Piranha.Web
 		private void RenderUL(Page curr, List<Sitemap> sm, StringBuilder str, int stoplevel, string cssclass = "") {
 			if (sm != null && sm.CountVisible() > 0 && sm[0].Level <= stoplevel) {
 				// Render level start
-				if (Hooks.Menu.RenderLevelStart != null) {
-					Hooks.Menu.RenderLevelStart(this, str, cssclass) ;
+				if (Hooks.UI.Menu.RenderLevelStart != null) {
+					Hooks.UI.Menu.RenderLevelStart(this, str, cssclass) ;
 				} else {
 					str.AppendLine("<ul class=\"" + cssclass + "\">") ;
 				}
@@ -436,8 +410,8 @@ namespace Piranha.Web
 				foreach (Sitemap page in sm)
 					if (!page.IsHidden) RenderLI(curr, page, str, stoplevel) ;
 				// Render level end
-				if (Hooks.Menu.RenderLevelEnd != null) {
-					Hooks.Menu.RenderLevelEnd(this, str, cssclass) ;
+				if (Hooks.UI.Menu.RenderLevelEnd != null) {
+					Hooks.UI.Menu.RenderLevelEnd(this, str, cssclass) ;
 				} else {
 					str.AppendLine("</ul>") ;
 				}
@@ -457,8 +431,8 @@ namespace Piranha.Web
 				var childactive = ChildActive(page, curr.Id) ;
 
 				// Render item start
-				if (Hooks.Menu.RenderItemStart != null) {
-					Hooks.Menu.RenderItemStart(this, str, page, active, childactive) ;
+				if (Hooks.UI.Menu.RenderItemStart != null) {
+					Hooks.UI.Menu.RenderItemStart(this, str, page, active, childactive) ;
 				} else {
 					var hasChild = page.Pages.Count > 0 ? " has-child" : "" ;
 					str.AppendLine("<li" + (curr.Id == page.Id ? " class=\"active" + hasChild + "\"" : 
@@ -466,8 +440,8 @@ namespace Piranha.Web
 						(page.Pages.Count > 0 ? " class=\"has-child\"" : ""))) + ">") ;
 				}
 				// Render item link
-				if (Hooks.Menu.RenderItemLink != null) {
-					Hooks.Menu.RenderItemLink(this, str, page) ;
+				if (Hooks.UI.Menu.RenderItemLink != null) {
+					Hooks.UI.Menu.RenderItemLink(this, str, page) ;
 				} else {
 					str.AppendLine(String.Format("<a href=\"{0}\">{1}</a>", GenerateUrl(page),
 						!String.IsNullOrEmpty(page.NavigationTitle) ? page.NavigationTitle : page.Title)) ;
@@ -476,8 +450,8 @@ namespace Piranha.Web
 				if (page.Pages.Count > 0)
 					RenderUL(curr, page.Pages, str, stoplevel) ;
 				// Render item end
-				if (Hooks.Menu.RenderItemEnd != null) {
-					Hooks.Menu.RenderItemEnd(this, str, page, active, childactive) ;
+				if (Hooks.UI.Menu.RenderItemEnd != null) {
+					Hooks.UI.Menu.RenderItemEnd(this, str, page, active, childactive) ;
 				} else {
 					str.AppendLine("</li>") ;
 				}
@@ -494,15 +468,15 @@ namespace Piranha.Web
 			if (sm != null && sm.CountVisible() > 0) {
 				foreach (Sitemap page in sm) {
 					if (page.Id == curr.Id) {
-						if (Hooks.Breadcrumb.RenderActiveItem != null) {
-							Hooks.Breadcrumb.RenderActiveItem(this, str, page) ;
+						if (Hooks.UI.Breadcrumb.RenderActiveItem != null) {
+							Hooks.UI.Breadcrumb.RenderActiveItem(this, str, page) ;
 						} else {
 							str.Append("<span>" + page.Title + "</span>") ;
 						}
 						return ;
 					} else if (ChildActive(page, curr.Id)) {
-						if (Hooks.Breadcrumb.RenderItem != null) {
-							Hooks.Breadcrumb.RenderItem(this, str, page) ;
+						if (Hooks.UI.Breadcrumb.RenderItem != null) {
+							Hooks.UI.Breadcrumb.RenderItem(this, str, page) ;
 						} else {
 							str.Append("<span><a href=\"" + Permalink(page.Permalink).ToString() + "\">" + page.Title + "</a></span> / ") ;
 						}

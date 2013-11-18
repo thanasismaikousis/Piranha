@@ -43,7 +43,7 @@ namespace Piranha.Models
 		/// <param name="setdates">Whether to automatically set the dates</param>
 		/// <returns>Wether the operation was successful</returns>
 		protected bool Save(System.Data.IDbTransaction tx = null, bool setdates = true) {
-			if (Database.Identity != Guid.Empty || Application.Current.UserProvider.IsAuthenticated) {
+			if (Application.Current.SecurityManager.IsAuthenticated) {
 				if (IsNew) {
 					if (setdates)
 						Created = DateTime.Now ;

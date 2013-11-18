@@ -183,7 +183,7 @@ Write(Html.HiddenFor(m => m.Group.Created));
             
             #line default
             #line hidden
-WriteLiteral("\r\n<div class=\"grid_9\">\r\n    <div class=\"box\">\r\n        <div class=\"title\"><h2>");
+WriteLiteral("\r\n<div class=\"grid_12\">\r\n    <div class=\"box\">\r\n        <div class=\"title\"><h2>");
 
 
             
@@ -275,102 +275,11 @@ WriteLiteral("</div>\r\n                    ");
             
             #line default
             #line hidden
-WriteLiteral("\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n<" +
-"div class=\"grid_3\">\r\n    <div class=\"box\">\r\n        <div class=\"title\"><h2>");
+WriteLiteral("\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n");
 
 
             
-            #line 57 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                          Write(Piranha.Resources.Settings.GroupMembers);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</h2></div>\r\n        <div class=\"inner\">\r\n");
-
-
-            
-            #line 59 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-             if (!Model.Group.IsNew) {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            <ul class=\"list\">\r\n");
-
-
-            
-            #line 61 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                 foreach (var user in Model.Members) {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <li><a href=\"");
-
-
-            
-            #line 62 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                        Write(Url.Action("user", new { id = user.Id }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\">");
-
-
-            
-            #line 62 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                                                                    Write(!String.IsNullOrEmpty(user.Name) ? user.Name : user.Login);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</a></li>\r\n");
-
-
-            
-            #line 63 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("            </ul>\r\n");
-
-
-            
-            #line 65 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-            } else {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <p><em>");
-
-
-            
-            #line 66 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-                  Write(Piranha.Resources.Settings.GroupMembersNew);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("</em></p>\r\n");
-
-
-            
-            #line 67 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
-            }
-
-            
-            #line default
-            #line hidden
-WriteLiteral("        </div>\r\n    </div>\r\n</div>\r\n");
-
-
-            
-            #line 71 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
+            #line 55 "..\..\Areas\Manager\Views\Settings\Group.cshtml"
    Html.EndForm() ; 
 
             

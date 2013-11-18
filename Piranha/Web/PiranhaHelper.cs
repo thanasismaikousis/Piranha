@@ -87,24 +87,6 @@ namespace Piranha.Web
 		}
 
 		/// <summary>
-		/// Gets an encrypted API-key valid for 30 minutes.
-		/// </summary>
-		/// <param name="apiKey">The API-key</param>
-		/// <returns>The ecnrypted key</returns>
-		public static string APIKey(this HtmlHelper helper, Guid apiKey) {
-			return HttpUtility.UrlEncode(APIKeys.EncryptApiKey(apiKey)) ;
-		}
-
-		/// <summary>
-		/// Gets an encrypted API-key valid for 30 minutes.
-		/// </summary>
-		/// <param name="apiKey">The API-key</param>
-		/// <returns>The ecnrypted key</returns>
-		public static string APIKey(this HtmlHelper helper, string apiKey) {
-			return APIKey(helper, new Guid(apiKey)) ;
-		}
-
-		/// <summary>
 		/// Generats the base url for all thumbnails.
 		/// </summary>
 		/// <param name="helper">The url helper</param>

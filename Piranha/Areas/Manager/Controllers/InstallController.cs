@@ -15,7 +15,8 @@ using Piranha.Models;
 
 namespace Piranha.Areas.Manager.Controllers
 {
-	public class InstallModel {
+	public class InstallModel 
+	{
 		[Required(ErrorMessage="Du måste välja ett användarnamn.")]
 		public string UserLogin { get ; set ; }
 
@@ -66,10 +67,7 @@ namespace Piranha.Areas.Manager.Controllers
 		public ActionResult RunUpdate(LoginModel m) {
 			// Authenticate the user
 			if (ModelState.IsValid) {
-				SysUser user = SysUser.Authenticate(m.Login, m.Password) ;
-				if (user != null) {
-					FormsAuthentication.SetAuthCookie(user.Id.ToString(), m.RememberMe) ;
-					HttpContext.Session[PiranhaApp.USER] = user ;
+                if (Piranha.Application.Current.SecurityManager.SignIn(m.Login, m.Password)) {
 					return RedirectToAction("ExecuteUpdate") ;
 				} else {
 					ViewBag.Message = @Piranha.Resources.Account.MessageLoginFailed ;
@@ -85,7 +83,7 @@ namespace Piranha.Areas.Manager.Controllers
 
 		[HttpGet()]
 		public ActionResult ExecuteUpdate() {
-			if (Application.Current.UserProvider.IsAuthenticated && User.HasAccess("ADMIN")) {
+			if (Application.Current.SecurityManager.IsAuthenticated && Application.Current.SecurityManager.IsAdmin()) {
 				// Execute all incremental updates in a transaction.
 				using (IDbTransaction tx = Database.OpenTransaction()) {
 					for (int n = Data.Database.InstalledVersion + 1; n <= Data.Database.CurrentVersion; n++) {
@@ -99,7 +97,7 @@ namespace Piranha.Areas.Manager.Controllers
 						string[] stmts = sql.Split(new char[] { ';' }) ;
 						foreach (string stmt in stmts) {
 							if (!String.IsNullOrEmpty(stmt.Trim()))
-								SysUser.Execute(stmt.Trim(), tx) ;
+								SysGroup.Execute(stmt.Trim(), tx) ;
 						}
 
 						// Check for update class
@@ -110,7 +108,7 @@ namespace Piranha.Areas.Manager.Controllers
 						}
 					}
 					// Now lets update the database version.
-					SysUser.Execute("UPDATE sysparam SET sysparam_value = @0 WHERE sysparam_name = 'SITE_VERSION'", 
+					SysGroup.Execute("UPDATE sysparam SET sysparam_value = @0 WHERE sysparam_name = 'SITE_VERSION'", 
 						tx, Data.Database.CurrentVersion) ;
 					SysParam.InvalidateParam("SITE_VERSION") ;
 					tx.Commit() ;
@@ -142,7 +140,7 @@ namespace Piranha.Areas.Manager.Controllers
 					// Create database from script
 					foreach (string stmt in stmts) {
 						if (!String.IsNullOrEmpty(stmt.Trim()))
-							SysUser.Execute(stmt, tx) ;
+							SysGroup.Execute(stmt, tx) ;
 					}
 					tx.Commit() ;
 				}
@@ -151,31 +149,32 @@ namespace Piranha.Areas.Manager.Controllers
 					// Split statements and execute
 					stmts = data.Split(new char[] { ';' }) ;
 					using (IDbTransaction tx = Database.OpenTransaction()) {
-						// Create user
-						SysUser usr = new SysUser() {
-							Login = m.UserLogin,
-							Email = m.UserEmail,
-							GroupId = new Guid("7c536b66-d292-4369-8f37-948b32229b83"),
-							Created = DateTime.Now,
-							Updated = DateTime.Now
-						} ;
-						usr.Save(tx) ;
+                        // Create admin role
+                        Piranha.Application.Current.SecurityManager.CreateRole("Admin") ;
 
-						// Create user password
-						SysUserPassword pwd = new SysUserPassword() {
-							Id = usr.Id,
-							Password = m.Password,
-							IsNew = false
-						} ;
-						pwd.Save(tx) ;
+                        // Create admin user
+                        Piranha.Application.Current.SecurityManager.CreateUser(m.UserLogin, m.Password) ;
 
 						// Create default data
 						foreach (string stmt in stmts) {
 							if (!String.IsNullOrEmpty(stmt.Trim()))
-								SysUser.Execute(stmt, tx) ;
+								SysGroup.Execute(stmt, tx) ;
 						}		
 						tx.Commit() ;
 					}	
+				}
+
+				// Create ASP.NET Identity roles
+				foreach (var role in Config.ManagerRoles) { 
+					Application.Current.SecurityManager.CreateRole(role) ;
+				}
+
+				// Create ASP.NET Identity user
+				Application.Current.SecurityManager.CreateUser(m.UserLogin, m.Password) ;
+
+				// Add user to roles
+				foreach (var role in Config.ManagerRoles) { 
+					Application.Current.SecurityManager.AddToRole(m.UserLogin, role) ;
 				}
 				return RedirectToAction("index", "account") ;
 			}

@@ -124,21 +124,6 @@ namespace Piranha.Mvc
 		public static IHtmlString Breadcrumb(int StartLevel = 1, string RootNode = "") { return Helper.Breadcrumb(StartLevel, RootNode) ; }
 
 		/// <summary>
-		/// Gets an encrypted API-key valid for 30 minutes.
-		/// </summary>
-		/// <param name="apiKey">The API-key</param>
-		/// <returns>The ecnrypted key</returns>
-		public static IHtmlString APIKey(Guid apiKey) { return Helper.APIKey(apiKey) ; }
-
-		/// <summary>
-		/// Gets an ecrypted API-key valid for 30 minutes. If no API-key is provided
-		/// the key for the currently logged in user is used.
-		/// </summary>
-		/// <param name="apiKey"></param>
-		/// <returns></returns>
-		public static IHtmlString APIKey(string apiKey = "") { return Helper.APIKey(apiKey) ; }
-
-		/// <summary>
 		/// Generates the correct controller name for the given permalink. The generated
 		/// controller can be used in forms and actionlinks as the controller name. If the
 		/// permalink is omitted, the permalink to the current page or post is used.

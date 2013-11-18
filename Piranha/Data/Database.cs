@@ -24,11 +24,6 @@ namespace Piranha.Data
 		public static int CurrentVersion = 32 ;
 
 		/// <summary>
-		/// Gets the currently logged in users identity.
-		/// </summary>
-		internal static Guid Identity ;
-
-		/// <summary>
 		/// Gets/sets the current provider name.
 		/// </summary>
 		public static string ProviderName { get ; set ; }
@@ -72,36 +67,6 @@ namespace Piranha.Data
 			}
 		}
 		#endregion
-
-		/// <summary>
-		/// Logs in the given user when no HttpContext is available.
-		/// </summary>
-		/// <param name="login">Username</param>
-		/// <param name="password">Password</param>
-		/// <returns>If the login was successful</returns>
-		public static bool Login(string login, string password) {
-			var usr = Models.SysUser.Authenticate(login, password) ;
-
-			if (usr != null) {
-				Identity = usr.Id ;
-				return true ;
-			}
-			return false ;
-		}
-
-		/// <summary>
-		/// Logs in the default sys user.
-		/// </summary>
-		public static void LoginSys() {
-			Identity = Config.SysUserId ;
-		}
-
-		/// <summary>
-		/// Logs out the current user.
-		/// </summary>
-		public static void Logout() {
-			Identity = Guid.Empty ;
-		}
 
 		/// <summary>
 		/// Gets the database connection from the current config.

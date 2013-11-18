@@ -52,6 +52,7 @@ namespace Piranha
 		private const string MANAGER_NAMESPACES = "managerNamespaces" ;
 		private const string PASSIVE_MODE = "passiveMode" ;
 		private const string PREFIXLESS_PERMALINKS = "prefixlessPermalinks" ;
+		private const string MANAGER_ROLES = "managerRoles" ;
 		#endregion
 
 		/// <summary>
@@ -87,7 +88,16 @@ namespace Piranha
 		[ConfigurationProperty(MANAGER_NAMESPACES, IsRequired=false)]
 		public StringElement ManagerNamespaces {
 			get { return (StringElement)this[MANAGER_NAMESPACES] ; }
-			set { this [MANAGER_NAMESPACES] = value ; }
+			set { this[MANAGER_NAMESPACES] = value ; }
+		}
+
+		/// <summary>
+		/// Gets/sets the roles that have access to the manager interface.
+		/// </summary>
+		[ConfigurationProperty(MANAGER_ROLES, IsRequired=false)]
+		public StringElement ManagerRoles {
+			get { return (StringElement)this[MANAGER_ROLES] ; }
+			set { this[MANAGER_ROLES] = value ;  }
 		}
 
 		/// <summary>

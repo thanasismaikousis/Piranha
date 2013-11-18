@@ -13,71 +13,6 @@ namespace Piranha.WebPages
 	/// </summary>
 	public static class Hooks {
 		/// <summary>
-		/// The different hooks available for the breadcrumb.
-		/// </summary>
-		public static class Breadcrumb {
-			/// <summary>
-			/// Renders the start of the breadcrumb.
-			/// </summary>
-			public static Delegates.BreadcrumbStartHook RenderStart ;
-
-			/// <summary>
-			/// Renders the end of the breadcrumb.
-			/// </summary>
-			public static Delegates.BreadcrumbEndHook RenderEnd ;
-
-			/// <summary>
-			/// Renders a breadcrumb item.
-			/// </summary>
-			public static Delegates.BreadcrumbItemHook RenderItem ;
-
-			/// <summary>
-			/// Renders the currently active breadcrumb item.
-			/// </summary>
-			public static Delegates.BreadcrumbItemHook RenderActiveItem ;
-		}
-
-		/// <summary>
-		/// The different hooks available for the head.
-		/// </summary>
-		public static class Head {
-			/// <summary>
-			/// Renders optional information in the head.
-			/// </summary>
-			public static Delegates.HeadHook Render ;
-		}
-
-		/// <summary>
-		/// The different hooks availble for the menu.
-		/// </summary>
-		public static class Menu {
-			/// <summary>
-			/// Renders the start of a menu level.
-			/// </summary>
-			public static Delegates.MenuLevelHook RenderLevelStart ;
-
-			/// <summary>
-			/// Renders the end of a menu level.
-			/// </summary>
-			public static Delegates.MenuLevelHook RenderLevelEnd ;
-
-			/// <summary>
-			/// Renders the start of a menu item.
-			/// </summary>
-			public static Delegates.MenuItemHook RenderItemStart ;
-
-			/// <summary>
-			/// Renders the end of a menu item.
-			/// </summary>
-			public static Delegates.MenuItemHook RenderItemEnd ;
-
-			/// <summary>
-			/// Renders the menu item link.
-			/// </summary>
-			public static Delegates.MenuItemLinkHook RenderItemLink ;
-		}
-
-		/// <summary>
 		/// The different model hooks available for the application.
 		/// </summary>
 		public static class Model { 
@@ -167,25 +102,6 @@ namespace Piranha.WebPages
 			public static Delegates.ManagerModelLoadedHook<Areas.Manager.Models.SiteTreeEditModel> SiteEditModelLoaded ;
 			 */
 
-			/// <summary>
-			/// Executed after the user list model is loaded but before the view is called.
-			/// </summary>
-			public static Delegates.ManagerModelHook<Models.Manager.SettingModels.UserListModel> UserListModelLoaded ;
-
-			/// <summary>
-			/// Executed after the user edit model is loaded but before the view is called.
-			/// </summary>
-			public static Delegates.ManagerModelHook<Models.Manager.SettingModels.UserEditModel> UserEditModelLoaded ;
-
-            /// <summary>
-            /// Executed before the user edit model is saved.
-            /// </summary>
-            public static Delegates.ManagerModelHook<Models.Manager.SettingModels.UserEditModel> UserEditModelBeforeSave ;
-
-            /// <summary>
-            /// Executed after the user edit model is saved.
-            /// </summary>
-            public static Delegates.ManagerModelHook<Models.Manager.SettingModels.UserEditModel> UserEditModelAfterSave ;
 			/**
 			 * TODO
 			 * 
@@ -274,7 +190,10 @@ namespace Piranha.WebPages
 
 		public static class Mail
 		{
+            /*
+             * TODO
 			public static Delegates.SendPassword SendPassword ;
+             */
 		}
 	}
 }

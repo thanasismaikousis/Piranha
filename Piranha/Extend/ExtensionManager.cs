@@ -76,11 +76,9 @@ namespace Piranha.Extend
 		/// </summary>
 		public void OnImportsSatisfied() {
 			using (var db = new DataContext()) {
-				db.LoginSys() ;
 				// Run the ensure method for all extensions.
 				foreach (var ext in Extensions)
 					ext.Value.Ensure(db) ;
-				db.Logout() ;
 			}
 			// Ensure page types
 			EnsurePageTypes() ;
@@ -270,11 +268,9 @@ namespace Piranha.Extend
 				var removed = old.Where(r => !m.Regions.Contains(r)) ;
 
 				// Save Template
-				Data.Database.LoginSys() ;
 				foreach (var rem in removed)
 					rem.Delete() ;
 				m.SaveAll() ;
-				Data.Database.Logout() ;
 			}
 		}
 
@@ -307,9 +303,7 @@ namespace Piranha.Extend
 				m.Template.Type = type.GetType().FullName ;
 
 				// Save Template
-				Data.Database.LoginSys() ;
 				m.SaveAll() ;
-				Data.Database.Logout() ;
 			}
 		}
 	}

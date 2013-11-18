@@ -175,16 +175,6 @@ WriteLiteral("\"></script>\r\n    <script type=\"text/javascript\">\r\n        v
             
             #line default
             #line hidden
-WriteLiteral("\";\r\n        var apikey = \"");
-
-
-            
-            #line 23 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
-                 Write(Html.APIKey("FE868D4F-797C-4E60-B876-64E6FC2424AA"));
-
-            
-            #line default
-            #line hidden
 WriteLiteral(@""";
         siteroot += !siteroot.endsWith(""/"") ? ""/"" : """";
 
@@ -198,7 +188,7 @@ WriteLiteral(@""";
 
 
             
-            #line 32 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 31 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
      if (!String.IsNullOrEmpty(ViewBag.Message)) {
 
             
@@ -209,7 +199,7 @@ WriteLiteral("    <script type=\"text/javascript\">\r\n        setTimeout(functi
 
 
             
-            #line 38 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 37 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
     }
 
             
@@ -219,7 +209,7 @@ WriteLiteral("    ");
 
 
             
-            #line 39 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 38 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Head", false));
 
             
@@ -230,7 +220,7 @@ WriteLiteral("\r\n</head>\r\n<body>\r\n    <div class=\"top\">\r\n        <div c
 
 
             
-            #line 45 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 44 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                  Write(Url.Action("index", "page"));
 
             
@@ -240,7 +230,7 @@ WriteLiteral("\">\r\n                    <img src=\"");
 
 
             
-            #line 46 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 45 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                          Write(Href("~/res.ashx/areas/manager/content/img/logo.png"));
 
             
@@ -251,7 +241,7 @@ WriteLiteral("\" alt=\"Piranha CMS\" /></a>\r\n                <div class=\"site
 
 
             
-            #line 48 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 47 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                      Write(Piranha.WebPages.WebPiranha.CurrentSite.MetaTitle);
 
             
@@ -261,7 +251,7 @@ WriteLiteral("</span>\r\n                    <a class=\"public-site\" target=\"p
 
 
             
-            #line 49 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 48 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                                              Write(Piranha.WebPages.WebPiranha.GetSiteUrl());
 
             
@@ -271,7 +261,7 @@ WriteLiteral("\">\r\n                        ");
 
 
             
-            #line 50 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 49 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                    Write(Piranha.WebPages.WebPiranha.GetSiteUrl());
 
             
@@ -281,7 +271,7 @@ WriteLiteral("</a>\r\n                </div>\r\n                ");
 
 
             
-            #line 52 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 51 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(Html.Partial("Partial/Menu"));
 
             
@@ -292,7 +282,7 @@ WriteLiteral("\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div
 
 
             
-            #line 58 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 57 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                 Write(ViewBag.Title);
 
             
@@ -304,7 +294,7 @@ WriteLiteral("</h1></div>\r\n        </div>\r\n    </div>\r\n    <div class=\"bo
 
 
             
-            #line 64 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 63 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(RenderSection("Toolbar", false));
 
             
@@ -314,7 +304,7 @@ WriteLiteral("\r\n            </div>\r\n");
 
 
             
-            #line 66 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 65 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
              if (!String.IsNullOrEmpty(ViewBag.Message)) {
 
             
@@ -324,7 +314,7 @@ WriteLiteral("            <div class=\"grid_12 sys-message\">\r\n               
 
 
             
-            #line 68 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 67 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                            Write(!String.IsNullOrEmpty(ViewBag.MessageCss) ? " " + ViewBag.MessageCss : "");
 
             
@@ -335,7 +325,7 @@ WriteLiteral("\">\r\n                    <div class=\"inner\">\r\n              
 
 
             
-            #line 70 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 69 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
                                              Write(ViewBag.Message);
 
             
@@ -345,7 +335,7 @@ WriteLiteral("</p>\r\n                    </div>\r\n                </div>\r\n  
 
 
             
-            #line 74 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 73 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
             }
 
             
@@ -355,7 +345,7 @@ WriteLiteral("            <div class=\"content left\">\r\n                ");
 
 
             
-            #line 76 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 75 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
            Write(RenderBody());
 
             
@@ -383,7 +373,7 @@ WriteLiteral(@"
 
 
             
-            #line 94 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
+            #line 93 "..\..\Areas\Manager\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Foot", false));
 
             

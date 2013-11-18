@@ -17,10 +17,6 @@ using Piranha.Models;
 /// </summary>
 public static class PiranhaApp
 {
-	#region Members
-	public const string USER = "Piranha_User" ;
-	#endregion
-	
 	#region Language extensions
 	/// <summary>
 	/// Implodes the string array into a string with all item separated by the given separator.
@@ -184,35 +180,22 @@ public static class PiranhaApp
 
 	#region CMS extension
 	/// <summary>
-	/// Gets the currently logged in user.
-	/// </summary>
-	/// <param name="p">The security principal</param>
-	/// <returns>The current user</returns>
-	public static SysUser GetProfile(this IPrincipal p) {
-		if (Piranha.Application.Current.UserProvider.IsAuthenticated) {
-			// Reload user if session has been dropped
-			if (HttpContext.Current.Session[USER] == null)
-				HttpContext.Current.Session[USER] = 
-					SysUser.GetSingle(Piranha.Application.Current.UserProvider.UserId) ;
-			return (SysUser)HttpContext.Current.Session[USER] ;
-		}
-		return new SysUser() ;
-	}
-
-	/// <summary>
 	/// Checks if the current user has access to the function.
 	/// </summary>
 	/// <param name="p">The principal</param>
 	/// <param name="function">The function to check</param>
 	/// <returns>If the user has access</returns>
 	public static bool HasAccess(this IPrincipal p, string function) {
-		if (Piranha.Application.Current.UserProvider.IsAuthenticated) {
+		if (Piranha.Application.Current.SecurityManager.IsAuthenticated) {
+            return true ;
+            /* TODO
 			Dictionary<string, SysAccess> access = SysAccess.GetAccessList() ;
 
 			if (access.ContainsKey(function)) {
 				SysGroup group = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
 				return group != null && (group.Id == access[function].GroupId || group.HasChild(access[function].GroupId)) ;
 			}
+             */
 		}
 		return false ;
 	}
@@ -225,11 +208,12 @@ public static class PiranhaApp
 	/// <param name="groupid">The group</param>
 	/// <returns>If the user is a member</returns>
 	public static bool IsMember(this IPrincipal p, Guid groupid) {
-		if (Piranha.Application.Current.UserProvider.IsAuthenticated) {
-			if (groupid != Guid.Empty) {
-				SysGroup g = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
-				return g.Id == groupid || g.HasChild(groupid) ;
-			}
+		if (Piranha.Application.Current.SecurityManager.IsAuthenticated) {
+            // TODO
+            //if (groupid != Guid.Empty) {
+            //    SysGroup g = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
+            //    return g.Id == groupid || g.HasChild(groupid) ;
+            //}
 			return true ;
 		}
 		return false ;
