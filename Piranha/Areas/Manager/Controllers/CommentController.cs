@@ -24,7 +24,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list view.
 		/// </summary>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
         public ActionResult Index() {
             return View(CommentListModel.Get());
         }
@@ -33,7 +33,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the edit view for the comment with the given id.
 		/// </summary>
 		/// <param name="id">The comment id</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult Edit(string id) {
 			return View(CommentEditModel.GetById(new Guid(id))) ;
 		}
@@ -43,7 +43,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model</param>
 		[HttpPost()]
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult Edit(CommentEditModel m) {
 			if (ModelState.IsValid) {
 				m.Save() ;
@@ -57,7 +57,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the comment with the given id.
 		/// </summary>
 		/// <param name="id">The comment id.</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult Delete(string id) {
 			var m = CommentEditModel.GetById(new Guid(id))  ;
 			if (m.Delete()) {
@@ -69,7 +69,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the settings view for the comments.
 		/// </summary>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult Settings() {
 			return View(CommentSettingsModel.Get()) ;
 		}
@@ -79,7 +79,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model.</param>
 		[HttpPost()]
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult Settings(CommentSettingsModel m) {
 			if (ModelState.IsValid) {
 				m.Save() ;
@@ -92,7 +92,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the comment list for the given parent id.
 		/// </summary>
 		/// <param name="parentid">The parent id</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult List(string id) {
 			return View(CommentListModel.GetCommentList(new Guid(id))) ;
 		}
@@ -102,7 +102,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// available for the given comment.
 		/// </summary>
 		/// <param name="id">The comment id</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult AjaxApprove(string id) {
 			using (var db = new DataContext()) {
 				var comment = db.Comments.Where(c => c.Id == new Guid(id)).SingleOrDefault() ;
@@ -126,7 +126,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// available for the given comment.
 		/// </summary>
 		/// <param name="id">The comment id</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult AjaxReject(string id) {
 			using (var db = new DataContext()) {
 				var comment = db.Comments.Where(c => c.Id == new Guid(id)).SingleOrDefault() ;
@@ -150,7 +150,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// available for the given comment.
 		/// </summary>
 		/// <param name="id">The comment id</param>
-		[Access(Function="ADMIN_COMMENT")]
+		[Access(Permission="ADMIN_COMMENT")]
 		public ActionResult AjaxDelete(string id) {
 			using (var db = new DataContext()) {
 				var comment = db.Comments.Where(c => c.Id == new Guid(id)).SingleOrDefault() ;

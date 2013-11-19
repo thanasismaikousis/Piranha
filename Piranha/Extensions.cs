@@ -243,7 +243,7 @@ public static class PiranhaApp
 	/// <param name="access">The attribute</param>
 	private static void CheckAccess(IPrincipal user, Piranha.AccessAttribute access) {
 		if (access != null) {
-			if (!user.HasAccess(access.Function)) {
+			if (!user.HasAccess(access.Permission)) {
 				if (!String.IsNullOrEmpty(access.RedirectUrl)) {
 					HttpContext.Current.Response.Redirect(access.RedirectUrl, false) ;
 				} else {

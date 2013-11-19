@@ -84,7 +84,7 @@ namespace Piranha.Mvc
 			if (m != null) {
 				var attr = m.GetCustomAttribute<AccessAttribute>(true) ;
 				if (attr != null) {
-					if (!User.HasAccess(attr.Function))
+					if (!User.HasAccess(attr.Permission))
 						return false ;
 				}
 			}

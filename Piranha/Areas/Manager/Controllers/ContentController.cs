@@ -15,7 +15,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list view.
 		/// </summary>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Index(string id = "") {
 			var m = ListModel.Get() ;
 
@@ -50,7 +50,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the files list.
 		/// </summary>
 		/// <returns></returns>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Uploads() {
 			return View("Uploads", UploadModel.Get()) ;
 		}
@@ -59,7 +59,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Inserts a new media object.
 		/// </summary>
 		/// <param name="parentid">The optional parent folder id.</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Insert(string id) {
 			return EditInternal(new EditModel(false, !String.IsNullOrEmpty(id) ? new Guid(id) : Guid.Empty), true) ;
 		}
@@ -68,7 +68,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Inserts a new media folder object.
 		/// </summary>
 		/// <param name="parentid">The optional parent folder id.</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult InsertFolder(string id) {
 			return EditInternal(new EditModel(true, !String.IsNullOrEmpty(id) ? new Guid(id) : Guid.Empty), true) ;
 		}
@@ -77,7 +77,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Edits or inserts a new content model.
 		/// </summary>
 		/// <param name="id">The id of the content</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Edit(string id) {
 			return EditInternal(EditModel.GetById(new Guid(id))) ;
 		}
@@ -111,7 +111,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Edit(bool draft, EditModel m) {
 			try {
 			    // Executes the media edit before save hook, if registered
@@ -174,7 +174,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Sync(string id) {
 			var m = EditModel.GetById(new Guid(id)) ;
 
@@ -206,7 +206,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the specified content record.
 		/// </summary>
 		/// <param name="id">The content id</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Delete(string id) {
 			EditModel m = EditModel.GetById(new Guid(id)) ;
 
@@ -234,7 +234,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Reverts to latest published verison.
 		/// </summary>
 		/// <param name="id">The page id.</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public ActionResult Revert(string id) {
 			Piranha.Models.Content.Revert(new Guid(id)) ;
 
@@ -251,7 +251,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Unpublishes the specified page.
 		/// </summary>
 		/// <param name="id">The page id</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Unpublish(string id) {
 			Piranha.Models.Content.Unpublish(new Guid(id)) ;
 
@@ -272,7 +272,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the content object with the given id
 		/// </summary>
 		/// <param name="id">The content id</param>
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public JsonResult Get(string id) {
 			var draft = true ;
 			if (!String.IsNullOrEmpty(Request["tinymce"]))
@@ -297,7 +297,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <returns>The status of the action</returns>
 		[HttpPost()]
-		[Access(Function="ADMIN_CONTENT")]
+		[Access(Permission="ADMIN_CONTENT")]
 		public JsonResult Upload() {
 			// Get custom headers
 			var filename = Request.Headers["X-File-Name"] ;

@@ -16,7 +16,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list view for the categories.
 		/// </summary>
-		[Access(Function="ADMIN_CATEGORY")]
+		[Access(Permission="ADMIN_CATEGORY")]
 		public ActionResult Index() {
 			return View("Index", ListModel.Get()) ;
 		}
@@ -25,7 +25,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Edits or inserts a new category.
 		/// </summary>
 		/// <param name="id">The category id</param>
-		[Access(Function="ADMIN_CATEGORY")]
+		[Access(Permission="ADMIN_CATEGORY")]
 		public ActionResult Edit(string id = "") {
 			EditModel m = new EditModel() ;
 
@@ -44,7 +44,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <param name="m">The model</param>
 		/// <returns></returns>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_CATEGORY")]
+		[Access(Permission="ADMIN_CATEGORY")]
 		public ActionResult Edit(EditModel m) {
 			if (ModelState.IsValid) {
 				if (m.SaveAll()) {
@@ -63,7 +63,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the category with the given id.
 		/// </summary>
 		/// <param name="id">The category id</param>
-		[Access(Function="ADMIN_CATEGORY")]
+		[Access(Permission="ADMIN_CATEGORY")]
 		public ActionResult Delete(string id) {
 			EditModel m = EditModel.GetById(new Guid(id)) ;
 

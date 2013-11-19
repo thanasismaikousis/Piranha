@@ -21,7 +21,16 @@ namespace Piranha
 		/// <summary>
 		/// The permission rule.
 		/// </summary>
-		public string Function { get ; set ; }
+		[Obsolete("Please refer to AccessAttribute.Permission instead.")]
+		public string Function {
+			get { return Permission ; }
+			set { Permission = value ; }
+		}
+
+		/// <summary>
+		/// Gets/sets the internal id of the permission.
+		/// </summary>
+		public string Permission { get ; set ; }
 
 		/// <summary>
 		/// The optional url to redirect to if the user does not have

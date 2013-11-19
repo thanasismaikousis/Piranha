@@ -14,7 +14,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list of all page templates.
 		/// </summary>
-		[Access(Function="ADMIN_PAGE_TEMPLATE")]
+		[Access(Permission="ADMIN_PAGE_TEMPLATE")]
 		public ActionResult PageList() {
 			return View("PageList", PageListModel.Get()) ;
 		}
@@ -24,7 +24,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// whether a template id was passed to the action or not.
 		/// </summary>
 		/// <param name="id">The template id</param>
-		[Access(Function="ADMIN_PAGE_TEMPLATE")]
+		[Access(Permission="ADMIN_PAGE_TEMPLATE")]
 		public ActionResult Page(string id = "") {
 			PageEditModel m = new PageEditModel() ; 
 			
@@ -42,7 +42,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_PAGE_TEMPLATE")]
+		[Access(Permission="ADMIN_PAGE_TEMPLATE")]
 		public ActionResult Page(PageEditModel m) {
 			if (ModelState.IsValid) {
 				if (m.SaveAll()) {
@@ -62,7 +62,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the specified page template.
 		/// </summary>
 		/// <param name="id">The template id</param>
-		[Access(Function="ADMIN_PAGE_TEMPLATE")]
+		[Access(Permission="ADMIN_PAGE_TEMPLATE")]
 		public ActionResult DeletePage(string id) {
 			PageEditModel pm = PageEditModel.GetById(new Guid(id)) ;
 
@@ -77,7 +77,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list of post templates.
 		/// </summary>
-		[Access(Function="ADMIN_POST_TEMPLATE")]
+		[Access(Permission="ADMIN_POST_TEMPLATE")]
 		public ActionResult PostList() {
 			return View("PostList", PostListModel.Get()) ;
 		}
@@ -87,7 +87,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// whether a template id was passed to the action or not.
 		/// </summary>
 		/// <param name="id">The template id</param>
-		[Access(Function="ADMIN_POST_TEMPLATE")]
+		[Access(Permission="ADMIN_POST_TEMPLATE")]
 		public ActionResult Post(string id = "") {
 			PostEditModel m = new PostEditModel() ; 
 			
@@ -105,7 +105,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_POST_TEMPLATE")]
+		[Access(Permission="ADMIN_POST_TEMPLATE")]
 		public ActionResult Post(PostEditModel m) {
 			ViewBag.Title = Piranha.Resources.Template.EditPostTitleNew ;
 
@@ -133,7 +133,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the specified post template.
 		/// </summary>
 		/// <param name="id">The template id</param>
-		[Access(Function="ADMIN_POST_TEMPLATE")]
+		[Access(Permission="ADMIN_POST_TEMPLATE")]
 		public ActionResult DeletePost(string id) {
 			PostEditModel pm = PostEditModel.GetById(new Guid(id)) ;
 

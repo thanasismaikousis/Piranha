@@ -20,7 +20,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the param list.
 		/// </summary>
-		[Access(Function="ADMIN_PARAM")]
+		[Access(Permission="ADMIN_PARAM")]
         public ActionResult ParamList() {
             return View(@"~/Areas/Manager/Views/Settings/ParamList.cshtml", ParamListModel.Get());
         }
@@ -29,7 +29,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Edits or creates a new parameter
 		/// </summary>
 		/// <param name="id">Parameter id</param>
-		[Access(Function="ADMIN_PARAM")]
+		[Access(Permission="ADMIN_PARAM")]
 		public ActionResult Param(string id) {
 			if (!String.IsNullOrEmpty(id)) {
 				ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingParam ;
@@ -45,7 +45,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="id">Parameter id</param>
 		[HttpPost()]
-		[Access(Function="ADMIN_PARAM")]
+		[Access(Permission="ADMIN_PARAM")]
 		public ActionResult Param(ParamEditModel pm) {
 			if (pm.Param.IsNew)
 				ViewBag.Title = Piranha.Resources.Settings.EditTitleNewParam ;
@@ -70,7 +70,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the specified param
 		/// </summary>
 		/// <param name="id">The param</param>
-		[Access(Function="ADMIN_PARAM")]
+		[Access(Permission="ADMIN_PARAM")]
 		public ActionResult DeleteParam(string id) {
 			ParamEditModel pm = ParamEditModel.GetById(new Guid(id)) ;
 			

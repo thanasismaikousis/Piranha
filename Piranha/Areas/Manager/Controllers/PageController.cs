@@ -14,7 +14,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Default controller. Gets the page list.
 		/// </summary>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
         public ActionResult Index(string id = "") {
 			var internalId = Config.SiteTree ;
 
@@ -48,7 +48,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the site tree with the given id.
 		/// </summary>
 		/// <param name="id">The internal id of the site tree</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Site(string id) {
 			try {
 				var param = Piranha.Models.SysParam.GetByName("SITEMAP_EXPANDED_LEVELS") ;
@@ -72,6 +72,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the SEO list for the site tree with the given id.
 		/// </summary>
 		/// <param name="id">The internal id of the site.</param>
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Seo(string id) {
 			try {
 				var param = Piranha.Models.SysParam.GetByName("SITEMAP_EXPANDED_LEVELS") ;
@@ -95,7 +96,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Opens the edit view for the selected page.
 		/// </summary>
 		/// <param name="id">The page id</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Edit(string id) {
 			EditModel pm = EditModel.GetById(new Guid(id)) ;
 
@@ -126,7 +127,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="pm">The page model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Edit(bool draft, EditModel pm) {
 			if (ModelState.IsValid) {
 				try {
@@ -177,7 +178,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Detaches the page with the given id from it's original.
 		/// </summary>
 		/// <param name="id">The page id</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Detach(string id) {
 			ViewBag.Title = Piranha.Resources.Page.EditTitleExisting ;
 			if (EditModel.Detach(new Guid(id))) {
@@ -194,7 +195,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="im">The insert model</param>
 		[HttpPost()]
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Insert(InsertModel im) {
 			EditModel pm = null ;
 
@@ -217,7 +218,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the page specified by the given id.
 		/// </summary>
 		/// <param name="id">The page id</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Delete(string id) {
 			EditModel pm = EditModel.GetById(new Guid(id), true) ;
 
@@ -239,7 +240,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Reverts to latest published verison.
 		/// </summary>
 		/// <param name="id">The page id.</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Revert(string id) {
 			EditModel.Revert(new Guid(id)) ;
 
@@ -252,7 +253,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Unpublishes the specified page.
 		/// </summary>
 		/// <param name="id">The page id</param>
-		[Access(Function="ADMIN_PAGE")]
+		[Access(Permission="ADMIN_PAGE")]
 		public ActionResult Unpublish(string id) {
 			EditModel.Unpublish(new Guid(id)) ;
 

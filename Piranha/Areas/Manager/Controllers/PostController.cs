@@ -13,7 +13,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Default constructor. Gets the post list.
 		/// </summary>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 	    public ActionResult Index() {
 			var m = Models.PostListModel.Get() ;
 			ViewBag.Title = @Piranha.Resources.Post.ListTitle ;
@@ -29,7 +29,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the post list for the specified post template.
 		/// </summary>
 		/// <param name="id">The post template id</param>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Template(string id) {
 			var m = Models.PostListModel.GetByTemplateId(new Guid(id)) ;
 			ViewBag.Title = @Piranha.Resources.Post.ListTitle ;
@@ -46,7 +46,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="im">The insert model</param>
 		[HttpPost()]
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Insert(InsertModel im) {
 			EditModel pm = EditModel.CreateByTemplate(im.TemplateId) ;
 
@@ -63,7 +63,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Edits the post with the given id.
 		/// </summary>
 		/// <param name="id">The post id</param>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Edit(string id) {
 			EditModel m = EditModel.GetById(new Guid(id)) ;
 
@@ -87,7 +87,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Edit(bool draft, EditModel m) {
 			if (ModelState.IsValid) {
 				try {
@@ -136,7 +136,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the post.
 		/// </summary>
 		/// <param name="id">The post id</param>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Delete(string id) {
 			EditModel pm = EditModel.GetById(new Guid(id)) ;
 
@@ -153,7 +153,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Reverts to latest published verison.
 		/// </summary>
 		/// <param name="id">The post id.</param>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Revert(string id) {
 			EditModel.Revert(new Guid(id)) ;
 
@@ -166,7 +166,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Unpublishes the specified page.
 		/// </summary>
 		/// <param name="id">The post id</param>
-		[Access(Function="ADMIN_POST")]
+		[Access(Permission="ADMIN_POST")]
 		public ActionResult Unpublish(string id) {
 			EditModel.Unpublish(new Guid(id)) ;
 

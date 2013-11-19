@@ -13,7 +13,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// <summary>
 		/// Gets the list view for the site tree.
 		/// </summary>
-		[Access(Function="ADMIN_SITETREE")]
+		[Access(Permission="ADMIN_SITETREE")]
         public ActionResult Index() {
             return View("Index", SiteTreeListModel.Get());
         }
@@ -22,7 +22,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Edits or creates a new site tree.
 		/// </summary>
 		/// <param name="id">The site tree id</param>
-		[Access(Function="ADMIN_SITETREE")]
+		[Access(Permission="ADMIN_SITETREE")]
 		public ActionResult Edit(string id = "") {
 			if (!String.IsNullOrEmpty(id)) {
 				ViewBag.Title = Resources.SiteTree.EditTitleExisting ;
@@ -37,7 +37,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// </summary>
 		/// <param name="m">The edit model</param>
 		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_SITETREE")]
+		[Access(Permission="ADMIN_SITETREE")]
 		public ActionResult Edit(SiteTreeEditModel m) {
 			if (ModelState.IsValid) {
 				if (m.Save()) {
@@ -59,7 +59,7 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Deletes the given model.
 		/// </summary>
 		/// <param name="id">The site tree id</param>
-		[Access(Function="ADMIN_SITETREE")]
+		[Access(Permission="ADMIN_SITETREE")]
 		public ActionResult Delete(string id) {
 			var m = SiteTreeEditModel.GetById(new Guid(id)) ;
 
