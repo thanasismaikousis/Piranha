@@ -43,8 +43,8 @@ namespace Piranha.Azure
 		/// Gets/sets the connection string for the azure blob storage.
 		/// </summary>
 		[ConfigurationProperty(STORAGE_CONNECTION_STRING, IsRequired=false)]
-		public StringElement StorageConnectionString {
-			get { return (StringElement)this[STORAGE_CONNECTION_STRING] ; }
+		public Configuration.StringElement StorageConnectionString {
+			get { return (Configuration.StringElement)this[STORAGE_CONNECTION_STRING] ; }
 			set { this[STORAGE_CONNECTION_STRING] = value ; }
 		}
 
@@ -52,22 +52,7 @@ namespace Piranha.Azure
 		/// Default constructor.
 		/// </summary>
 		public SettingsElement() {
-			StorageConnectionString = new StringElement() ;
-		}
-	}
-
-	/// <summary>
-	/// A configuration element with a string value.
-	/// </summary>
-	internal class StringElement : ConfigurationElement
-	{
-		/// <summary>
-		/// Gets/sets the element value.
-		/// </summary>
-		[ConfigurationProperty("value", IsRequired=true)]
-		public string Value {
-			get { return (string)this["value"] ; }
-			set { this["value"] = value ; }
+			StorageConnectionString = new Configuration.StringElement() ;
 		}
 	}
 }

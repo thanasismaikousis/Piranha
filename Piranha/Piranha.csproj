@@ -445,6 +445,8 @@
     <Compile Include="Config.cs" />
     <Compile Include="ConfigFile.cs" />
     <Compile Include="ConfigProvider.cs" />
+    <Compile Include="Configuration\BooleanElement.cs" />
+    <Compile Include="Configuration\StringElement.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataExtensions.cs" />
     <Compile Include="Data\ActiveRecord.cs" />
