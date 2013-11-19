@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+using AutoMapper;
 using Piranha.Web;
 using Piranha.Web.Handlers;
 
@@ -79,6 +80,11 @@ namespace Piranha
 		public Security.ISecurityManager SecurityManager { get ; private set ; }
 
 		/// <summary>
+		/// Gets/sets the entity cache.
+		/// </summary>
+		internal Cache.EntityCache EntityCache { get ; private set ; }
+
+		/// <summary>
 		/// Gets if the currently installed client framework is intended for WebPages.
 		/// </summary>
 		public bool IsWebPages {
@@ -144,10 +150,31 @@ namespace Piranha
 			// Create the dummy security manager
 			SecurityManager = new Security.DummyManager() ;
 
+			// Create the internal entity cache
+			EntityCache = new Cache.EntityCache() ;
+
             // Register all request handlers
 			RegisterHandlers() ;
+
+			// Register all auto mapper rules
+			RegisterMappings() ;
 		}
 	
+		/// <summary>
+		/// Initializes the security manager.
+		/// </summary>
+		/// <typeparam name="TUser">The user entity</typeparam>
+		/// <typeparam name="TRole">The role entity</typeparam>
+		/// <typeparam name="TContext">The security context</typeparam>
+		public void InitSecurity<TUser, TRole, TContext>()
+			where TUser : IdentityUser
+			where TRole : IdentityRole
+			where TContext : IdentityDbContext<TUser>
+		{ 
+			SecurityManager = new Security.SecurityManager<TUser, TRole, TContext>() ;
+		}
+
+		#region Private methods
 		/// <summary>
 		/// Registers the default handlers.
 		/// </summary>
@@ -167,17 +194,24 @@ namespace Piranha
 		}
 
 		/// <summary>
-		/// Initializes the security manager.
+		/// Registers all auto mappings
 		/// </summary>
-		/// <typeparam name="TUser">The user entity</typeparam>
-		/// <typeparam name="TRole">The role entity</typeparam>
-		/// <typeparam name="TContext">The security context</typeparam>
-		public void InitSecurity<TUser, TRole, TContext>()
-			where TUser : IdentityUser
-			where TRole : IdentityRole
-			where TContext : IdentityDbContext<TUser>
-		{ 
-			SecurityManager = new Security.SecurityManager<TUser, TRole, TContext>() ;
+		private void RegisterMappings() {
+			// Entities -> Models
+			Mapper.CreateMap<Entities.Permission, Models.Permission>()
+				.ForMember(m => m.Roles, o => o.Ignore()) ;
+
+			// Models -> Entities
+			Mapper.CreateMap<Models.Permission, Entities.Permission>()
+				.ForMember(e => e.Id, o => o.Ignore())
+				.ForMember(e => e.IsLocked, o => o.Ignore())
+				.ForMember(e => e.Roles, o => o.Ignore())
+				.ForMember(e => e.Created, o => o.Ignore())
+				.ForMember(e => e.Updated, o => o.Ignore()) ;
+
+			// Validate configuration
+			Mapper.AssertConfigurationIsValid() ;
 		}
+		#endregion
 	}
 }

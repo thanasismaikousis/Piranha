@@ -22,7 +22,6 @@ namespace Piranha.Entities.Maps
 			Property(g => g.Updated).HasColumnName("sysgroup_updated") ;
 
 			HasOptional(g => g.Parent) ;
-			HasMany(g => g.Permissions).WithRequired(p => p.Group) ;
 			HasMany(g => g.Extensions).WithRequired().HasForeignKey(e => e.ParentId) ;
 		}
 	}

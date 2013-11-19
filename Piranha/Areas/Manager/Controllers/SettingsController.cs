@@ -85,73 +85,7 @@ namespace Piranha.Areas.Manager.Controllers
 			return GroupList() ;
 		}
 		#endregion
-
-		#region Access actions
-		/// <summary>
-		/// Gets the access list.
-		/// </summary>
-		[Access(Function="ADMIN_ACCESS")]
-        public ActionResult AccessList() {
-            return View(@"~/Areas/Manager/Views/Settings/AccessList.cshtml", AccessListModel.Get());
-        }
-
-		/// <summary>
-		/// Edits or creates a new group
-		/// </summary>
-		/// <param name="id">The group id</param>
-		[Access(Function="ADMIN_ACCESS")]
-		public ActionResult Access(string id) {
-			if (!String.IsNullOrEmpty(id)) {
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingAccess ;
-				return View(@"~/Areas/Manager/Views/Settings/Access.cshtml", AccessEditModel.GetById(new Guid(id))) ;
-			} else {
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleNewAccess ;
-				return View(@"~/Areas/Manager/Views/Settings/Access.cshtml", new AccessEditModel()) ;
-			}
-		}
-
-		/// <summary>
-		/// Saves the access
-		/// </summary>
-		/// <param name="gd">The model</param>
-		[HttpPost()]
-		[Access(Function="ADMIN_ACCESS")]
-		public ActionResult Access(AccessEditModel am) {
-			if (am.Access.IsNew)
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleNewAccess ;
-			else ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingAccess ;
-
-			if (ModelState.IsValid) {
-				try {
-					if (am.SaveAll()) {
-						ModelState.Clear() ;
-						ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingAccess ;
-						SuccessMessage(Piranha.Resources.Settings.MessageAccessSaved) ;
-					} else ErrorMessage(Piranha.Resources.Settings.MessageAccessNotSaved) ;
-				} catch (Exception e) {
-					ErrorMessage(e.ToString()) ;
-				}
-			}
-			return View(@"~/Areas/Manager/Views/Settings/Access.cshtml", am) ;
-		}
-
-		/// <summary>
-		/// Deletes the specified group
-		/// </summary>
-		/// <param name="id">The access id</param>
-		[Access(Function="ADMIN_ACCESS")]
-		public ActionResult DeleteAccess(string id) {
-			AccessEditModel am = AccessEditModel.GetById(new Guid(id)) ;
-			
-			ViewBag.SelectedTab = "access" ;
-			if (am.DeleteAll())
-				SuccessMessage(Piranha.Resources.Settings.MessageAccessDeleted) ;
-			else ErrorMessage(Piranha.Resources.Settings.MessageAccessNotDeleted) ;
-
-			return AccessList() ;
-		}
-		#endregion
-
+		
 		#region Param actions
 		/// <summary>
 		/// Gets the param list.

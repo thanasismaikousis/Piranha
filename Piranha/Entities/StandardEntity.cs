@@ -14,13 +14,6 @@ namespace Piranha.Entities
 	[Serializable]
 	public abstract class StandardEntity<T> : BaseEntity where T : StandardEntity<T>
 	{
-		#region Members
-		/// <summary>
-		/// Whether not authenticated users should be able to save and delete.
-		/// </summary>
-		protected bool AllowAnonymous = false ;
-		#endregion
-
 		#region Properties
 		/// <summary>
 		/// Gets/sets the unique id.
@@ -54,24 +47,13 @@ namespace Piranha.Entities
 		/// <param name="db">The db context</param>
 		/// <param name="state">The current entity state</param>
 		public override void OnSave(DataContext db, EntityState state) {
-			if (db.Identity != Guid.Empty || Application.Current.SecurityManager.IsAuthenticated || AllowAnonymous) {
-				if (state == EntityState.Added) {
-					if (Id == Guid.Empty)
-						Id = Guid.NewGuid() ;
-					Created = Updated = DateTime.Now ;
-				} else if (state == EntityState.Modified) {
-					Updated = DateTime.Now ;
-				}
-			} else throw new UnauthorizedAccessException("User must be logged in to save entity") ;
-		}
-
-		/// <summary>
-		/// Deletes the current entity.
-		/// </summary>
-		/// <param name="db">The db context</param>
-		public override void OnDelete(DataContext db) {
-			if (db.Identity == Guid.Empty && !Application.Current.SecurityManager.IsAuthenticated && !AllowAnonymous)
-				throw new UnauthorizedAccessException("User must be logged in to delete entity") ;
+			if (state == EntityState.Added) {
+				if (Id == Guid.Empty)
+					Id = Guid.NewGuid() ;
+				Created = Updated = DateTime.Now ;
+			} else if (state == EntityState.Modified) {
+				Updated = DateTime.Now ;
+			}
 		}
 
         /// <summary>

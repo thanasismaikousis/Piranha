@@ -32,6 +32,16 @@ public static class PiranhaApp
 	}
 
 	/// <summary>
+	/// Implodes the string list into a string with all item separated by the given separator.
+	/// </summary>
+	/// <param name="arr">The list to implode</param>
+	/// <param name="sep">The optional separator</param>
+	/// <returns>The string</returns>
+	public static string Implode(this IList<string> list, string sep = "") { 
+		return Implode(list.ToArray(), sep) ;
+	}
+
+	/// <summary>
 	/// Gets a subset of the given array as a new array.
 	/// </summary>
 	/// <typeparam name="T">The array type</typeparam>
@@ -180,22 +190,27 @@ public static class PiranhaApp
 
 	#region CMS extension
 	/// <summary>
-	/// Checks if the current user has access to the function.
+	/// Checks if the current user has access to the permission.
 	/// </summary>
 	/// <param name="p">The principal</param>
-	/// <param name="function">The function to check</param>
+	/// <param name="internalId">The internal id of the permission</param>
 	/// <returns>If the user has access</returns>
-	public static bool HasAccess(this IPrincipal p, string function) {
+	public static bool HasAccess(this IPrincipal p, string internalId) {
 		if (Piranha.Application.Current.SecurityManager.IsAuthenticated) {
-            return true ;
-            /* TODO
-			Dictionary<string, SysAccess> access = SysAccess.GetAccessList() ;
+			// This is for backwards compatibilty
+			if (internalId == "ADMIN")
+				return Piranha.Application.Current.SecurityManager.IsAdmin() ;
 
-			if (access.ContainsKey(function)) {
-				SysGroup group = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
-				return group != null && (group.Id == access[function].GroupId || group.HasChild(access[function].GroupId)) ;
+			// Check the requested permission
+			using (var api = new Piranha.Api()) { 
+				var permission = api.Permissions.GetByInternalId(internalId) ;
+
+				if (permission != null) {
+					foreach (var role in permission.Roles)
+						if (Piranha.Application.Current.SecurityManager.IsInRole(role))
+							return true ;
+				}
 			}
-             */
 		}
 		return false ;
 	}
@@ -209,11 +224,11 @@ public static class PiranhaApp
 	/// <returns>If the user is a member</returns>
 	public static bool IsMember(this IPrincipal p, Guid groupid) {
 		if (Piranha.Application.Current.SecurityManager.IsAuthenticated) {
-            // TODO
-            //if (groupid != Guid.Empty) {
-            //    SysGroup g = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
-            //    return g.Id == groupid || g.HasChild(groupid) ;
-            //}
+			// TODO
+			//if (groupid != Guid.Empty) {
+			//    SysGroup g = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
+			//    return g.Id == groupid || g.HasChild(groupid) ;
+			//}
 			return true ;
 		}
 		return false ;

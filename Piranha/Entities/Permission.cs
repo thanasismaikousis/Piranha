@@ -6,13 +6,13 @@ namespace Piranha.Entities
 	/// The permission entity.
 	/// </summary>
 	[Serializable]
-	public class Permission : StandardEntity<Permission>
+	public class Permission : StandardEntity<Permission>, IInternalIdEntity, ICacheEntity
 	{
 		#region Properties
 		/// <summary>
-		/// Gets/sets the id of the group who is attached to the permission.
+		/// Gets/sets the internal id of the permission.
 		/// </summary>
-		public Guid GroupId { get ; set ; }
+		public string InternalId { get ; set ; }
 
 		/// <summary>
 		/// Gets/sets the name of the permission.
@@ -28,13 +28,18 @@ namespace Piranha.Entities
 		/// Gets/sets whether this permission can be removed or not.
 		/// </summary>
 		public bool IsLocked { get ; set ; }
+
+		/// <summary>
+		/// Gets/sets the roles that are granted this permission.
+		/// </summary>
+		public string Roles { get ; set ; }
 		#endregion
 
-		#region Navigation properties
-		/// <summary>
-		/// Gets/sets the group attached to the permission.
-		/// </summary>
-		public Group Group { get ; set ; }
-		#endregion
+        /// <summary>
+        /// Removes the current entity from the application cache.
+        /// </summary>
+		public void RemoveFromCache() {
+			Application.Current.EntityCache.Permissions.Remove(Id) ;
+		}
 	}
 }

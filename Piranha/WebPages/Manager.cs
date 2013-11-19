@@ -198,8 +198,6 @@ namespace Piranha.WebPages
 				new MenuItem() { InternalId = "Roles", Name = "TODO Roles", Action = "index", Controller = "role" },
 				new MenuItem() { InternalId = "Groups", Name = @Resources.Tabs.SystemGroups, Action = "grouplist", Controller = "settings", 
 					Permission = "ADMIN_GROUP", SelectedActions = "grouplist, group, deletegroup" },
-				new MenuItem() { InternalId = "Permissions", Name = @Resources.Tabs.SystemAccess, Action = "accesslist", Controller = "settings", 
-					Permission = "ADMIN_ACCESS", SelectedActions = "accesslist, access, deleteaccess" },
 				new MenuItem() { InternalId = "Parameters", Name = @Resources.Tabs.SystemParams, Action = "paramlist", Controller = "settings", 
 					Permission = "ADMIN_PARAM", SelectedActions = "paramlist, param, deleteparam" }
 			}}

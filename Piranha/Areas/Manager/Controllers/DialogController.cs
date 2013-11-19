@@ -15,7 +15,6 @@ namespace Piranha.Areas.Manager.Controllers
 		/// Gets the link dialog for the given site id.
 		/// </summary>
 		/// <param name="id">The site id</param>
-		[Access(Function="ADMIN")]
 		public ActionResult Link(string id) {
 			return View(Models.LinkDialogModel.GetBySiteId(new Guid(id))) ;
 		}

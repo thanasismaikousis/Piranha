@@ -176,9 +176,163 @@ namespace Piranha.Areas.Manager.Controllers
 				foreach (var role in Config.ManagerRoles) { 
 					Application.Current.SecurityManager.AddToRole(m.UserLogin, role) ;
 				}
+
+				// Create default permissions
+				CreatePermissions(Config.ManagerRoles) ;
+
 				return RedirectToAction("index", "account") ;
 			}
 			return Index() ;
 		}
-    }
+
+		#region Private methods
+		/// <summary>
+		/// Creates all of the default permissions.
+		/// </summary>
+		/// <param name="roles">The manager roles</param>
+		private void CreatePermissions(string[] roles) {
+			// Permissions
+			using (var db = new DataContext()) {
+				var roleStr = roles.Implode(",") ;
+
+				var perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_PAGE_TEMPLATE",
+					Name = "Page types",
+					Description = "Permission to manage page types.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_POST_TEMPLATE",
+					Name = "Post types",
+					Description = "Permission to manage post types.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_PARAM",
+					Name = "Params",
+					Description = "Permission to manage parameters.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_ACCESS",
+					Name = "Permissions",
+					Description = "Permission to manage permissions.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_ROLE",
+					Name = "Roles",
+					Description = "Permission to manage roles.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_PAGE",
+					Name = "Pages",
+					Description = "Permission to create and update pages.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_PAGE_PUBLISH",
+					Name = "Page publishing",
+					Description = "Permission to publish, unpublish and delete pages.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_POST",
+					Name = "Posts",
+					Description = "Permission to create and update pages.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_POST_PUBLISH",
+					Name = "Post publishing",
+					Description = "Permission to publish, unpublish and delete posts.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_CATEGORY",
+					Name = "Categories",
+					Description = "Permission to manage categories",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_CONTENT",
+					Name = "Media",
+					Description = "Permission to create and update media.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_CONTENT_PUBLISH",
+					Name = "Media publishing",
+					Description = "Permission to manage media.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_USER",
+					Name = "Users",
+					Description = "Permission to manage user accounts.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_COMMENT",
+					Name = "Comments",
+					Description = "Permission to manage comments.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				perm = new Entities.Permission() {
+					IsLocked = true,
+					InternalId = "ADMIN_SITETREE",
+					Name = "Sites",
+					Description = "Permission to manage sites.",
+					Roles = roleStr
+				} ;
+				db.Permissions.Add(perm) ;
+
+				db.SaveChanges() ;
+			}
+		}
+		#endregion
+	}
 }

@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessAttribute.cs" />
+    <Compile Include="Api.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="Areas\Manager\Controllers\AccountController.cs" />
     <Compile Include="Areas\Manager\Controllers\CategoryController.cs" />
@@ -326,21 +327,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\Access.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Access.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\AccessList.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AccessList.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\ExternalList.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ExternalList.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Areas\Manager\Views\Settings\Group.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -451,10 +437,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_ViewStart.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Cache\EntityCache.cs" />
     <Compile Include="Cache\ICacheProvider.cs" />
+    <Compile Include="Cache\InternalIdCache.cs" />
     <Compile Include="Cache\MemCacheProvider.cs" />
     <Compile Include="Cache\WebCacheProvider.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="ConfigFile.cs" />
     <Compile Include="ConfigProvider.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataExtensions.cs" />
@@ -470,6 +459,8 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Extension.cs" />
     <Compile Include="Entities\Group.cs" />
+    <Compile Include="Entities\ICacheEntity.cs" />
+    <Compile Include="Entities\IInternalIdEntity.cs" />
     <Compile Include="Entities\Internal\Category.cs" />
     <Compile Include="Entities\Internal\Content.cs" />
     <Compile Include="Entities\Internal\DraftRecord.cs" />
@@ -489,7 +480,6 @@
     <Compile Include="Entities\Internal\RegionTemplate.cs" />
     <Compile Include="Entities\Internal\Relation.cs" />
     <Compile Include="Entities\Internal\Sitemap.cs" />
-    <Compile Include="Entities\Internal\SysAccess.cs" />
     <Compile Include="Entities\Internal\SysGroup.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -580,8 +570,6 @@
     <Compile Include="Models\Manager\Placement.cs" />
     <Compile Include="Models\Manager\PostModels\EditModel.cs" />
     <Compile Include="Models\Manager\PostModels\InsertModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\AccessEditModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\AccessListModel.cs" />
     <Compile Include="Models\Manager\SettingModels\GroupEditModel.cs" />
     <Compile Include="Models\Manager\SettingModels\GroupListModel.cs" />
     <Compile Include="Models\Manager\SettingModels\ParamEditModel.cs" />
@@ -593,10 +581,12 @@
     <Compile Include="Models\Manager\TemplateModels\RegionInsertModel.cs" />
     <Compile Include="Models\Manager\UploadModels\EditModel.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PostArchive.cs" />
     <Compile Include="Models\PostModel.cs" />
-    <Compile Include="ConfigFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IPermissionRepository.cs" />
+    <Compile Include="Repositories\PermissionRepository.cs" />
     <Compile Include="Resources\Account.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1075,18 +1065,6 @@
     <Content Include="Areas\Manager\Views\Post\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Settings\Access.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Access.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Settings\AccessList.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>AccessList.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Settings\ExternalList.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>ExternalList.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Manager\Views\Settings\Group.cshtml">
       <Generator>RazorGenerator</Generator>

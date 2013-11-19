@@ -102,19 +102,32 @@ namespace Piranha
 		/// </summary>
 		/// <returns>The numbe of changes saved.</returns>
 		public override int SaveChanges() {
-			foreach (var entity in ChangeTracker.Entries()) {
-				//
-				// Call the correct software trigger.
-				//
-				if (entity.Entity is Entities.BaseEntity) {
-					if (entity.State == EntityState.Added || entity.State == EntityState.Modified) {
-						((Entities.BaseEntity)entity.Entity).OnSave(this, entity.State) ;
-					} else if (entity.State == EntityState.Deleted) {
-						((Entities.BaseEntity)entity.Entity).OnDelete(this) ;
+			var cached = new List<Entities.ICacheEntity>() ;
+
+			foreach (var entry in ChangeTracker.Entries()) {
+				// Call the correct entity event.
+				if (entry.Entity is Entities.BaseEntity) {
+					if (entry.State == EntityState.Added || entry.State == EntityState.Modified) {
+						((Entities.BaseEntity)entry.Entity).OnSave(this, entry.State) ;
+					} else if (entry.State == EntityState.Deleted) {
+						((Entities.BaseEntity)entry.Entity).OnDelete(this) ;
 					}
 				}
+
+				// Check if entity is cached
+				if (entry.Entity is Entities.ICacheEntity)
+					cached.Add((Entities.ICacheEntity)entry.Entity) ;
 			}
-			return base.SaveChanges();
+
+			// Save the changes
+			var ret = base.SaveChanges() ;
+
+			// Remove all cached entities from cache
+			foreach (var entity in cached)
+				entity.RemoveFromCache() ;
+
+			// Return the number of saved changes
+			return ret ;
 		}
 
 		/// <summary>

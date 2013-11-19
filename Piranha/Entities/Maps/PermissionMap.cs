@@ -12,17 +12,12 @@ namespace Piranha.Entities.Maps
 	internal class PermissionMap : EntityTypeConfiguration<Permission>
 	{
 		public PermissionMap() {
-			ToTable("sysaccess") ;
+			ToTable("Permissions") ;
 
-			Property(p => p.Id).HasColumnName("sysaccess_id") ;
-			Property(p => p.GroupId).HasColumnName("sysaccess_group_id") ;
-			Property(p => p.Name).HasColumnName("sysaccess_function").IsRequired().HasMaxLength(64) ;
-			Property(p => p.Description).HasColumnName("sysaccess_description").HasMaxLength(255) ;
-			Property(p => p.IsLocked).HasColumnName("sysaccess_locked") ;
-			Property(p => p.Created).HasColumnName("sysaccess_created") ;
-			Property(p => p.Updated).HasColumnName("sysaccess_updated") ;
-
-			HasRequired(p => p.Group) ;
+			Property(p => p.InternalId).IsRequired().HasMaxLength(32) ;
+			Property(p => p.Name).IsRequired().HasMaxLength(64) ;
+			Property(p => p.Description).HasMaxLength(255) ;
+			Property(p => p.Roles).HasMaxLength(255) ;
 		}
 	}
 }

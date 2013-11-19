@@ -27,6 +27,18 @@ CREATE TABLE [sysgroup] (
 	CONSTRAINT pk_sysgroup_id PRIMARY KEY ([sysgroup_id])
 );
 
+CREATE TABLE [Permissions] (
+	[Id] UNIQUEIDENTIFIER NOT NULL,
+	[InternalId] NVARCHAR(32) NOT NULL,
+	[Name] NVARCHAR(128) NOT NULL,
+	[Description] NVARCHAR(255) NULL,
+	[Roles] NVARCHAR(255) NULL,
+	[IsLocked] BIT NOT NULL default(0),
+	[Created] DATETIME NOT NULL,
+	[Updated] DATETIME NOT NULL,
+	CONSTRAINT PK_PermissionId PRIMARY KEY ([Id])	
+);
+
 CREATE TABLE [sysaccess] (
 	[sysaccess_id] UNIQUEIDENTIFIER NOT NULL,
 	[sysaccess_group_id] UNIQUEIDENTIFIER NOT NULL,
