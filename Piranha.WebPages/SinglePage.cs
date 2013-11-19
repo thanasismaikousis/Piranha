@@ -59,7 +59,9 @@ namespace Piranha.WebPages
 
 			// Check permissions
 			if (page.GroupId != Guid.Empty) {
-				if (!User.IsMember(page.GroupId)) {
+				// TODO!
+				//if (!User.IsMember(page.GroupId)) {
+				if (true) {
 					SysParam param = SysParam.GetByName("LOGIN_PAGE") ;
 					if (param != null)
 						Response.Redirect(param.Value, false) ;

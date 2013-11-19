@@ -52,7 +52,9 @@ namespace Piranha.Rest
 			try {
 				Models.PageModel pm = Models.PageModel.GetById(new Guid(id)) ;
 
-				if (pm != null && (pm.Page.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(pm.Page.GroupId))) {
+				// TODO!
+				//if (pm != null && (pm.Page.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(pm.Page.GroupId))) {
+				if (true) { 
 					// Page data
 					Page page = new Page() {
 						Id = pm.Page.Id,

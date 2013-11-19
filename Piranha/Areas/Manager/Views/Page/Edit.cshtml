@@ -37,15 +37,6 @@
                 });
             });
 
-            $('#Page_GroupId').change(function() {
-                var page_id = $("#Page_Id").val();
-                var group_id = $(this).val();
-
-                $.get("@Url.Action("grouplist")?page_id=" + page_id + "&group_id=" + group_id, function(data) {
-                    $("#disable-groups").html(data);
-                });
-            });
-
             $('#btnMove').click(function () {
                 $('#placement-edit').slideToggle('fast');
                 $(this).toggleClass('active');
@@ -325,15 +316,8 @@
                             <div class="inner">
                                 <ul class="form">
                                     <li>
-                                        @Html.LabelFor(m => m.Page.GroupId)
-                                        <div class="input">
-                                            @Html.DropDownListFor(m => m.Page.GroupId, Model.Groups)</div>
-                                        @Html.LabelFor(m => m.Page.DisabledGroups)
-                                        <div id="disable-groups" class="block">
-                                            @{ var dGroups = Model.Groups.Where(g => g.Value != Guid.Empty.ToString()).ToList() ; }
-                                            @Html.Partial("Partial/GroupList", new Piranha.Models.Manager.PageModels.GroupListModel() { 
-                                                Groups = Model.DisableGroups, Page = Model.Page })
-                                        </div>
+                                        <label>TODO</label>
+										<p>Security should be replaced with permissions.</p>
                                     </li>
                                     <li>
                                         @Html.LabelFor(m => m.Page.IsHidden)

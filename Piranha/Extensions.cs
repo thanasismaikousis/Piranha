@@ -216,39 +216,6 @@ public static class PiranhaApp
 	}
 
 	/// <summary>
-	/// Checks if the user is a member of the given group or is a member
-	/// of a group that has higher priviliges than the given group.
-	/// </summary>
-	/// <param name="p">The principal</param>
-	/// <param name="groupid">The group</param>
-	/// <returns>If the user is a member</returns>
-	public static bool IsMember(this IPrincipal p, Guid groupid) {
-		if (Piranha.Application.Current.SecurityManager.IsAuthenticated) {
-			// TODO
-			//if (groupid != Guid.Empty) {
-			//    SysGroup g = SysGroup.GetStructure().GetGroupById(p.GetProfile().GroupId) ;
-			//    return g.Id == groupid || g.HasChild(groupid) ;
-			//}
-			return true ;
-		}
-		return false ;
-	}
-
-	/// <summary>
-	/// Checks if the user is a member of the given group or is a member
-	/// of a group that has higher priviliges than the given group.
-	/// </summary>
-	/// <param name="p">The principal</param>
-	/// <param name="groupname">The group</param>
-	/// <returns>If the user is a member</returns>
-	public static bool IsMember(this IPrincipal p, string groupname) {
-		SysGroup g = SysGroup.GetSingle("sysgroup_name = @0", groupname) ;
-		if (g != null)
-			return IsMember(p, g.Id) ;
-		return false ;
-	}
-
-	/// <summary>
 	/// Checks if the current user has access to the method. If the user is not
 	/// authorized he/she is redirect to the correct url.
 	/// </summary>

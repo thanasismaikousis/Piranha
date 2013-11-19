@@ -269,20 +269,6 @@ namespace Piranha.Areas.Manager.Controllers
 		}
 
 		/// <summary>
-		/// Gets the grouplist for the given group and page.
-		/// </summary>
-		/// <param name="page_id">The page id.</param>
-		/// <param name="group_id">The group id.</param>
-		public ActionResult GroupList(string page_id, string group_id) {
-			var page = Piranha.Models.Page.GetSingle(new Guid(page_id), true) ;
-			var groups = SysGroup.GetParents(new Guid(group_id)) ;
-			groups.Reverse() ;
-
-			return View("Partial/GroupList", new GroupListModel() { 
-				Groups = groups, Page = page }) ;
-		}
-
-		/// <summary>
 		/// Gets the page with the given id and returns it as a json object.
 		/// </summary>
 		/// <param name="id">The page id</param>

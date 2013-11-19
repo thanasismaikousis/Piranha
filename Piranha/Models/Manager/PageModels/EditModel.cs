@@ -88,16 +88,6 @@ namespace Piranha.Models.Manager.PageModels
 		public virtual PageTemplate Template { get ; private set ; }
 
 		/// <summary>
-		/// Gets/sets the groups.
-		/// </summary>
-		public virtual SelectList Groups { get ; set ; }
-
-		/// <summary>
-		/// Gets/sets the groups that can be disabled.
-		/// </summary>
-		public List<SysGroup> DisableGroups { get ; set ; }
-
-		/// <summary>
 		/// Gets/sets the available parent pages.
 		/// </summary>
 		public List<PagePlacement> Parents { get ; set ; }
@@ -162,16 +152,9 @@ namespace Piranha.Models.Manager.PageModels
 			Properties = new List<Property>() ;
 			Extensions = new List<Extension>() ;
 			AttachedContent = new List<Piranha.Models.Content>() ;
-			DisableGroups = SysGroup.GetParents(Guid.Empty) ;
-			DisableGroups.Reverse() ;
 			CanDelete = true ;
 			CanPublish = true ;
 			Comments = new List<Entities.Comment>() ;
-
-			List<SysGroup> groups = SysGroup.GetStructure().Flatten() ;
-			groups.Reverse() ;
-			groups.Insert(0, new SysGroup() { Name = Piranha.Resources.Global.Everyone }) ;
-			Groups = new SelectList(groups, "Id", "Name") ;
 		}
 
 		/// <summary>
@@ -513,10 +496,6 @@ namespace Piranha.Models.Manager.PageModels
 			Regions.Clear() ;
 			Properties.Clear() ;
 			AttachedContent.Clear() ;
-
-			// Get group parents
-			DisableGroups = SysGroup.GetParents(Page.GroupId) ;
-			DisableGroups.Reverse() ;
 
 			// Get template & permalink
 			Template  = PageTemplate.GetSingle("pagetemplate_id = @0", Page.TemplateId) ;

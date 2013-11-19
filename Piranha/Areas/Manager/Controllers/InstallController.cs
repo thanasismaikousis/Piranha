@@ -97,7 +97,7 @@ namespace Piranha.Areas.Manager.Controllers
 						string[] stmts = sql.Split(new char[] { ';' }) ;
 						foreach (string stmt in stmts) {
 							if (!String.IsNullOrEmpty(stmt.Trim()))
-								SysGroup.Execute(stmt.Trim(), tx) ;
+								SysParam.Execute(stmt.Trim(), tx) ;
 						}
 
 						// Check for update class
@@ -108,7 +108,7 @@ namespace Piranha.Areas.Manager.Controllers
 						}
 					}
 					// Now lets update the database version.
-					SysGroup.Execute("UPDATE sysparam SET sysparam_value = @0 WHERE sysparam_name = 'SITE_VERSION'", 
+					SysParam.Execute("UPDATE sysparam SET sysparam_value = @0 WHERE sysparam_name = 'SITE_VERSION'", 
 						tx, Data.Database.CurrentVersion) ;
 					SysParam.InvalidateParam("SITE_VERSION") ;
 					tx.Commit() ;
@@ -140,7 +140,7 @@ namespace Piranha.Areas.Manager.Controllers
 					// Create database from script
 					foreach (string stmt in stmts) {
 						if (!String.IsNullOrEmpty(stmt.Trim()))
-							SysGroup.Execute(stmt, tx) ;
+							SysParam.Execute(stmt, tx) ;
 					}
 					tx.Commit() ;
 				}
@@ -158,7 +158,7 @@ namespace Piranha.Areas.Manager.Controllers
 						// Create default data
 						foreach (string stmt in stmts) {
 							if (!String.IsNullOrEmpty(stmt.Trim()))
-								SysGroup.Execute(stmt, tx) ;
+								SysParam.Execute(stmt, tx) ;
 						}		
 						tx.Commit() ;
 					}	

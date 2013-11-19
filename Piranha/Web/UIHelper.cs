@@ -426,7 +426,9 @@ namespace Piranha.Web
 		/// <param name="str">The string builder</param>
 		/// <param name="stoplevel">The desired stop level</param>
 		private void RenderLI(Page curr, Sitemap page, StringBuilder str, int stoplevel) {
-			if (page.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(page.GroupId)) {
+			// TODO
+			//if (page.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(page.GroupId)) {
+			if (true) {
 				var active = curr.Id == page.Id ;
 				var childactive = ChildActive(page, curr.Id) ;
 

@@ -25,7 +25,6 @@ namespace Piranha
 
 		#region DbSets
 		// External DbSets
-		public DbSet<Entities.Group> Groups { get ; set ; }
 		public DbSet<Entities.Permission> Permissions { get ; set ; }
 		public DbSet<Entities.Param> Params { get ; set ; }
 		public DbSet<Entities.Log> Logs { get ; set ; }
@@ -64,7 +63,6 @@ namespace Piranha
 		/// </summary>
 		/// <param name="modelBuilder">The model builder</param>
 		protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-			modelBuilder.Configurations.Add(new Entities.Maps.GroupMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.PermissionMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.ParamMap()) ;
 			modelBuilder.Configurations.Add(new Entities.Maps.LogMap()) ;

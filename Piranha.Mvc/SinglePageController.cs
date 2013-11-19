@@ -73,7 +73,9 @@ namespace Piranha.Mvc
 			var page = Page.GetByPermalink(CurrentPermalink, IsDraft) ;
 			if (page != null) {
 				if (page.GroupId != Guid.Empty) {
-					if (!User.IsMember(page.GroupId)) {
+					// TODO!
+					//if (!User.IsMember(page.GroupId)) {
+					if (true) {
 						SysParam param = SysParam.GetByName("LOGIN_PAGE") ;
 						if (param != null)
 							context.Result = Redirect(param.Value) ;

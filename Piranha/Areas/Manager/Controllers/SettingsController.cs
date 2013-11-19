@@ -15,77 +15,7 @@ namespace Piranha.Areas.Manager.Controllers
 	/// Settings controller for the manager area.
 	/// </summary>
     public class SettingsController : ManagerController
-    {
-		#region Group actions
-		/// <summary>
-		/// Gets the group list.
-		/// </summary>
-		[Access(Function="ADMIN_GROUP")]
-        public ActionResult GroupList() {
-            return View(@"~/Areas/Manager/Views/Settings/GroupList.cshtml", GroupListModel.Get());
-        }
-
-		/// <summary>
-		/// Edits or creates a new group
-		/// </summary>
-		/// <param name="id">The group id</param>
-		[Access(Function="ADMIN_GROUP")]
-		public ActionResult Group(string id) {
-			if (!String.IsNullOrEmpty(id)) {
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingGroup ;
-				return View(@"~/Areas/Manager/Views/Settings/Group.cshtml", GroupEditModel.GetById(new Guid(id))) ;
-			} else {
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleNewGroup ;
-				return View(@"~/Areas/Manager/Views/Settings/Group.cshtml", new GroupEditModel()) ;
-			}
-		}
-
-		/// <summary>
-		/// Saves the group
-		/// </summary>
-		/// <param name="gd">The model</param>
-		[HttpPost(), ValidateInput(false)]
-		[Access(Function="ADMIN_GROUP")]
-		public ActionResult Group(GroupEditModel gm) {
-			if (gm.Group.IsNew)
-				ViewBag.Title = Piranha.Resources.Settings.EditTitleNewGroup ;
-			else ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingGroup ;
-
-			// Check so that no groups are saved without a parent except the system administrator.
-			if (gm.Group.ParentId == Guid.Empty && gm.Group.Id != Config.SysAdminGroupId)
-				ModelState.AddModelError("Group.ParentId", Resources.Settings.GroupParentIdRequired) ;
-
-			if (ModelState.IsValid) {
-				try {
-					if (gm.SaveAll()) {
-						ModelState.Clear() ;
-						ViewBag.Title = Piranha.Resources.Settings.EditTitleExistingGroup ;
-						SuccessMessage(Piranha.Resources.Settings.MessageGroupSaved) ;
-					} else ErrorMessage(Piranha.Resources.Settings.MessageGroupNotSaved) ;
-				} catch (Exception e) {
-					ErrorMessage(e.ToString()) ;
-				}
-			}
-			return View(@"~/Areas/Manager/Views/Settings/Group.cshtml", gm) ;
-		}
-
-		/// <summary>
-		/// Deletes the specified group
-		/// </summary>
-		/// <param name="id">The group id</param>
-		[Access(Function="ADMIN_GROUP")]
-		public ActionResult DeleteGroup(string id) {
-			GroupEditModel gm = GroupEditModel.GetById(new Guid(id)) ;
-			
-			ViewBag.SelectedTab = "groups" ;
-			if (gm.DeleteAll())
-				SuccessMessage(Piranha.Resources.Settings.MessageGroupDeleted) ;
-			else ErrorMessage(Piranha.Resources.Settings.MessageGroupNotDeleted) ;
-			
-			return GroupList() ;
-		}
-		#endregion
-		
+    {		
 		#region Param actions
 		/// <summary>
 		/// Gets the param list.

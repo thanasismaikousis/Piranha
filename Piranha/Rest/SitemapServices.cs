@@ -72,7 +72,9 @@ namespace Piranha.Rest
 			List<Sitemap> sitemap = new List<Sitemap>() ;
 
 			sm.ForEach(map => {
-				if (map.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(map.GroupId)) {
+				// TODO!
+				//if (map.GroupId == Guid.Empty || HttpContext.Current.User.IsMember(map.GroupId)) {
+				if (true) {
 					sitemap.Add(new Sitemap() {
 						Id = map.Id,
 						Title = map.Title,

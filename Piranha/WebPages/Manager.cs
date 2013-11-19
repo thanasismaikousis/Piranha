@@ -196,8 +196,6 @@ namespace Piranha.WebPages
 			}},
 			new MenuGroup() { InternalId = "System", Name = @Resources.Global.MenuSystem, CssClass = "ico system", Items = new List<MenuItem>() {
 				new MenuItem() { InternalId = "Roles", Name = "TODO Roles", Action = "index", Controller = "role" },
-				new MenuItem() { InternalId = "Groups", Name = @Resources.Tabs.SystemGroups, Action = "grouplist", Controller = "settings", 
-					Permission = "ADMIN_GROUP", SelectedActions = "grouplist, group, deletegroup" },
 				new MenuItem() { InternalId = "Parameters", Name = @Resources.Tabs.SystemParams, Action = "paramlist", Controller = "settings", 
 					Permission = "ADMIN_PARAM", SelectedActions = "paramlist, param, deleteparam" }
 			}}

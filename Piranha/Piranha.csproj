@@ -327,16 +327,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\Group.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Group.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Settings\GroupList.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GroupList.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Areas\Manager\Views\Settings\Param.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -366,11 +356,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Attachments.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\Manager\Views\Shared\Partial\GroupList.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GroupList.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Areas\Manager\Views\Shared\Partial\Menu.generated.cs">
       <AutoGen>True</AutoGen>
@@ -460,7 +445,6 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Extension.cs" />
-    <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\ICacheEntity.cs" />
     <Compile Include="Entities\IInternalIdEntity.cs" />
     <Compile Include="Entities\Internal\Category.cs" />
@@ -482,9 +466,6 @@
     <Compile Include="Entities\Internal\RegionTemplate.cs" />
     <Compile Include="Entities\Internal\Relation.cs" />
     <Compile Include="Entities\Internal\Sitemap.cs" />
-    <Compile Include="Entities\Internal\SysGroup.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Entities\Internal\SysLog.cs" />
     <Compile Include="Entities\Internal\SysParam.cs" />
     <Compile Include="Entities\Internal\Upload.cs" />
@@ -492,7 +473,6 @@
     <Compile Include="Entities\Maps\CategoryMap.cs" />
     <Compile Include="Entities\Maps\CommentMap.cs" />
     <Compile Include="Entities\Maps\ExtensionMap.cs" />
-    <Compile Include="Entities\Maps\GroupMap.cs" />
     <Compile Include="Entities\Maps\LogMap.cs" />
     <Compile Include="Entities\Maps\MediaMap.cs" />
     <Compile Include="Entities\Maps\NamespaceMap.cs" />
@@ -566,14 +546,11 @@
     <Compile Include="Models\Manager\ContentModels\ListModel.cs" />
     <Compile Include="Models\Manager\ContentModels\PopupModel.cs" />
     <Compile Include="Models\Manager\PageModels\EditModel.cs" />
-    <Compile Include="Models\Manager\PageModels\GroupListModel.cs" />
     <Compile Include="Models\Manager\PageModels\InsertModel.cs" />
     <Compile Include="Models\Manager\PageModels\ListModel.cs" />
     <Compile Include="Models\Manager\Placement.cs" />
     <Compile Include="Models\Manager\PostModels\EditModel.cs" />
     <Compile Include="Models\Manager\PostModels\InsertModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\GroupEditModel.cs" />
-    <Compile Include="Models\Manager\SettingModels\GroupListModel.cs" />
     <Compile Include="Models\Manager\SettingModels\ParamEditModel.cs" />
     <Compile Include="Models\Manager\SettingModels\ParamListModel.cs" />
     <Compile Include="Models\Manager\TemplateModels\PageEditModel.cs" />
@@ -1068,14 +1045,6 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Manager\Views\Settings\Group.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Group.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Settings\GroupList.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>GroupList.generated.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\Manager\Views\Settings\Param.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Param.generated.cs</LastGenOutput>
@@ -1099,10 +1068,6 @@
     <Content Include="Areas\Manager\Views\Shared\Partial\Attachments.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Attachments.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Manager\Views\Shared\Partial\GroupList.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>GroupList.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Manager\Views\Shared\Partial\Menu.cshtml">
       <Generator>RazorGenerator</Generator>
