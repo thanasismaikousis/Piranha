@@ -32,17 +32,17 @@ namespace Piranha.Repositories
 		/// <param name="id">The id</param>
 		/// <returns>The model</returns>
 		public Models.Permission GetById(Guid id) {
-            var permission = Application.Current.EntityCache.Permissions.Get(id) ;
+			var permission = Application.Current.EntityCache.Permissions.Get(id) ;
 
-            if (permission == null) { 
-                permission = uow.Permissions.Where(p => p.Id == id).SingleOrDefault() ;
-                
-                if (permission != null)
-                    Application.Current.EntityCache.Permissions.Add(permission) ;
-            }
-            if (permission != null)
+			if (permission == null) {
+				permission = uow.Permissions.Where(p => p.Id == id).SingleOrDefault() ;
+
+				if (permission != null)
+					Application.Current.EntityCache.Permissions.Add(permission) ;
+			}
+			if (permission != null)
 				return Map(permission) ;
-            return null ;
+			return null ;
 		}
 
 		/// <summary>
@@ -53,17 +53,17 @@ namespace Piranha.Repositories
 		/// <param name="name">The name</param>
 		/// <returns>The model</returns>
 		public Models.Permission GetByInternalId(string internalId) {
-            var permission = Application.Current.EntityCache.Permissions.Get(internalId) ;
+			var permission = Application.Current.EntityCache.Permissions.Get(internalId) ;
 
-            if (permission == null) { 
-                permission = uow.Permissions.Where(p => p.InternalId == internalId).SingleOrDefault() ;
-                
-                if (permission != null)
-                    Application.Current.EntityCache.Permissions.Add(permission) ;
-            }
-            if (permission != null)
+			if (permission == null) {
+				permission = uow.Permissions.Where(p => p.InternalId == internalId).SingleOrDefault() ;
+
+				if (permission != null)
+					Application.Current.EntityCache.Permissions.Add(permission) ;
+			}
+			if (permission != null)
 				return Map(permission) ;
-            return null ;
+			return null ;
 		}
 
 		/// <summary>
